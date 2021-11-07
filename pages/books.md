@@ -10,12 +10,13 @@ eleventyNavigation:
 templateEngineOverride: njk
 ---
 
-Here we go?
-## Books
 
-{{ eleventy.serverless.query|dump }}
-{{ eleventy.serverless.path|dump }}
+{% set bookId = eleventy.serverless.path.id %}
+{{ bookId }}
 
-Testing 123
+{% set book = fetchedBook %}
+{% include 'components/book.njk' %}
 
-{{ 2 + 3 }}
+<pre>
+{{ fetchedBook | dump }}
+</pre>

@@ -1,0 +1,14 @@
+<article class="book">
+  <h2 class="book-title">{{ book.title }}</h2>
+  <div class="book-description">{{ book.description }}</div>
+  <div class="book-author">{{ book.author }}</div>
+  <div class="book-type">{{ book.type }}</div>
+  <div class="book-link">
+    <a href="{{ book.link | url }}">{{ book.link }}</a>
+  </div>
+  {# <img src="book."> #}
+  {%- if book.images|length %}
+    <img src="http://localhost:8055/assets/{{ book.images[0].image_id.file  }}" />
+    <pre>{{ book.images[0].image_id | dump }}</pre>
+  {%- endif %}
+</article>
