@@ -4,18 +4,35 @@ metaDescription: This is a sample meta description. If one is not present in you
 date: 2017-01-01T00:00:00.000Z
 permalink:
   build: /search/
-  serverless: /search/:id
+  serverless: /search/
 
 eleventyNavigation:
   key: Search
   order: 4
 
 ---
-{% set books = fetchedBooks %}
-{% if books %}
-  {% for book in books %}
+{% if fetchedBooks %}
+  <h1>Search Results</h1>
+
+  <div class="results">
+    {{ fetchedBooks.meta.filter_count }} results found.
+  </div>
+
+  {% for book in fetchedBooks.data %}
+    <a href="/books/{{ book.id }}">
     {% include 'components/book.njk' %}
+    </a>
   {% endfor %}
+  {% if fetchedBooks.nav %}
+    <div class="pagination">
+      {% if fetchedBooks.nav.previous %}
+        <a href="{{ fetchedBooks.nav.previous }}">Previous page</a>
+      {% endif %}
+      {% if fetchedBooks.nav.next %}
+        <a href="{{ fetchedBooks.nav.next }}">Next page</a>
+      {% endif %}
+    </div>
+  {% endif %}
 {% else %}
   <h1>No search results found</h1>
 {% endif %}
