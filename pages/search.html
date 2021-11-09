@@ -1,0 +1,21 @@
+---
+title: Search
+metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
+date: 2017-01-01T00:00:00.000Z
+permalink:
+  build: /search/
+  serverless: /search/:id
+
+eleventyNavigation:
+  key: Search
+  order: 4
+
+---
+{% set books = fetchedBooks %}
+{% if books %}
+  {% for book in books %}
+    {% include 'components/book.njk' %}
+  {% endfor %}
+{% else %}
+  <h1>No search results found</h1>
+{% endif %}

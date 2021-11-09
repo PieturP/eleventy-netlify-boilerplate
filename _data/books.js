@@ -14,7 +14,12 @@ module.exports = async () => {
 
     const data = await axios.get([
       `${env.DIRECTUS_API_HOST}/items/booksdata/${id}?fields=*,images.image_id.*`
-    ].join(''));
+    ].join(''),
+    {
+      headers: {
+        'Authorization': `Bearer ${env.DIRECTUS_API_TOKEN}`
+      }
+    });
 
     // console.log(data.data.data);
 
@@ -26,8 +31,13 @@ module.exports = async () => {
       `&filter[is_new][_eq]=1`,
       `&limit=20`,
       `&page=2`,
-      `&fields=*,images.image_id.*`,
-  ].join(''));
+      `&fields=*,images.image_id.*,keywords.*.*`,
+  ].join('')
+  ,{
+    headers: {
+      'Authorization': `Bearer ${env.DIRECTUS_API_TOKEN}`
+    }
+  });
   //   `), {
   //   duration: '3s',
   //   type: 'json'

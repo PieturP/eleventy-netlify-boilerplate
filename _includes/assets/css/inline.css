@@ -194,3 +194,6 @@ button {
 		font-size: 1.1rem;
 	}
 }
+
+.booklist a, .booklist a:link, .booklist a:visited { color: inherit; }
+.book pre { white-space: pre-wrap;}

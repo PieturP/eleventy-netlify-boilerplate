@@ -1,0 +1,21 @@
+---
+title: Books
+metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
+date: 2017-01-01T00:00:00.000Z
+permalink:
+  build: /books/
+  serverless: /books/:id
+
+eleventyNavigation:
+  key: Books
+  order: 4
+
+---
+{% set bookId = eleventy.serverless.path.id %}
+
+{% set book = fetchedBook %}
+{% if book %}
+  {% include 'components/book.njk' %}
+{% else %}
+  <h1>Book not found</h1>
+{% endif %}

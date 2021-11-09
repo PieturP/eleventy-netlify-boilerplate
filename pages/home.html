@@ -7,10 +7,12 @@ eleventyNavigation:
   key: Home
   order: 0
 ---
-<ol>
+<ol class="booklist">
 {%- for book in books.booksData %}
 <li>
-  {% include 'components/book.njk' %}
+  <a href="/books/{{book.id}}">
+    {% include 'components/book.njk' %}
+  </a>
 </li>
 {%- endfor %}
 </ol>
