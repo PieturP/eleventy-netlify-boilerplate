@@ -1,7 +1,15 @@
 <nav>
-  {% set navPages = collections.all | eleventyNavigation %}
+  {#
+    @FIXME
+
+    collections.all is not available in serverless functions. @TODO: find out how/why
+    The following should then be used instead:
+    {% set navPages = collections.all | eleventyNavigation %}
+
+    As an alternative, we use metadata.navPages instead.
+  #}
   <ul>
-  {%- for entry in navPages %}
+  {%- for entry in metadata.navPages %}
     <li>
       <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
     </li>

@@ -1,5 +1,24 @@
 {
-  "title": "Eleventy Netlify Boilerplate",
+  "title": "Scrinium Classical Antiquity",
   "description": "A template for building a simple blog website with the Eleventy static site generator, Netlify CMS, and with deployment to Netlify.",
-  "url": "https://eleventy-netlify-boilerplate.netlify.app"
+  "url": "https://eleventy-netlify-boilerplate.netlify.app",
+  "SNIPCART_API_KEY": "NmY3NDQ1MGYtNzRhNC00NTczLTk1ZTktNWQ1YjY0MzY2ZDVmNjM2NjIxNDg4Njc0NzE0NzM4",
+  "navPages": [
+    {
+      "url": "/",
+      "title": "Home"
+    },
+    {
+      "url": "/about",
+      "title": "About"
+    },
+    {
+      "url": "/contact",
+      "title": "Contact"
+    },
+    {
+      "url": "/search",
+      "title": "Search"
+    }
+  ]
 }

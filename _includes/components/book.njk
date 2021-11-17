@@ -1,7 +1,8 @@
 <article class="book">
+
   <div class="book__cover">
   {%- if book.images|length %}
-    <img src="{{books.IMAGE_HOST}}/assets/{{ book.images[0].image_id.file  }}" />
+    <img src="{{ books.IMAGE_HOST }}/assets/{{ book.images[0].image_id.file }}" />
   {%- endif %}
   </div>
   <div class="book__body">
@@ -9,6 +10,29 @@
     <div class="book__description">{{ book.description }}</div>
     <div class="book__author">{{ book.author }}</div>
     <div class="book__type">{{ book.type }}</div>
+    {% for keyword in book.keywords %}
+      {% if keyword.keyword_id.visible %}
+        <div class="book__keyword"><a href="/search/?keyword={{keyword.keyword_id.id}}">{{ keyword.keyword_id.name }}</a></div>
+      {% endif %}
+    {% endfor %}
+
+
+    <button class="snipcart-add-item"
+      data-item-id="{{book.id}}"
+      data-item-price="{{book.price}}"
+      data-item-url="{{ page.url }}{{ book.id }}"
+      data-item-description="{{ book.description }}"
+
+      data-item-quantity="1"
+      data-item-min-quantity="1"
+      data-item-max-quantity="1"
+
+      {%- if book.images|length %}
+        data-item-image="{{ books.IMAGE_HOST }}/assets/{{ book.images[0].image_id.file }}"
+      {%- endif %}
+      data-item-name="{{book.author}} {{book.title}} ">
+      Add to cart
+    </button>
     {# <img src="book."> #}
     {# <pre>{{ book | dump }}</pre> #}
   </div>

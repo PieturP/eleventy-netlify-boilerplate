@@ -21,8 +21,6 @@ module.exports = async () => {
       }
     });
 
-    // console.log(data.data.data);
-
     return data.data.data
   }
 
@@ -38,12 +36,6 @@ module.exports = async () => {
       'Authorization': `Bearer ${env.DIRECTUS_API_TOKEN}`
     }
   });
-  //   `), {
-  //   duration: '3s',
-  //   type: 'json'
-  // });
-
-  // console.dir(data)
 
   return {
     booksData: data.data.data,
