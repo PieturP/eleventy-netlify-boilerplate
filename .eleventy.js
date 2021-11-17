@@ -12,8 +12,14 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
     name: "serverless", // The serverless function name from your permalink object
-    functionsDir: "./netlify/functions/",
+    functionsDir: "./netlify/functions",
   });
+
+  // eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+  //   name: "shipping", // The serverless function name from your permalink object
+  //   functionsDir: "./netlify/functions",
+  // });
+
 
 
   // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add

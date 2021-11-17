@@ -151,9 +151,29 @@ const handler = async (event) => {
         const bookId = path[path.length - 1];
         eleventyConfig.addGlobalData("fetchedBook", async () => await getBook(bookId) );
       }
-      // if (route === 'about') {
-        // console.log('about!!');
-      // }
+      if (route === 'shipping') {
+
+        console.log('shipping!!');
+        console.log(event);
+
+        const response = {
+          "rates": [{
+            "cost": 10,
+            "description": "10$ shipping"
+            }, {
+            "cost": 20,
+            "description": "20$ shipping",
+            "guaranteedDaysToDelivery": 5
+            },
+            {
+              "cost": 25,
+              "description": "25$ shipping",
+              "guaranteedDaysToDelivery": 2
+              },
+          ]
+        }
+        eleventyConfig.addGlobalData("response", JSON.stringify(response));
+      }
     }
   });
 
@@ -163,11 +183,15 @@ const handler = async (event) => {
     // If you want some of the data cascade available in `page.data`, use `eleventyConfig.dataFilterSelectors`.
     // Read more: https://www.11ty.dev/docs/config/#data-filter-selectors
 
+    const headers = route !== 'shipping' ? {
+      "Content-Type": "text/html; charset=UTF-8",
+    } : {
+      "Content-Type": "application/json; charset=UTF-8",
+    }
+
     return {
       statusCode: 200,
-      headers: {
-        "Content-Type": "text/html; charset=UTF-8",
-      },
+      headers,
       body: page.content,
     };
   } catch (error) {
@@ -185,6 +209,8 @@ const handler = async (event) => {
     };
   }
 }
+
+exports.handler = handler
 
 //const { builder } = require("@netlify/functions");
 //exports.handler = builder(handler);
