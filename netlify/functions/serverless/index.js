@@ -154,8 +154,8 @@ const handler = async (event) => {
       if (route === 'shipping') {
 
         console.log('shipping!!');
-        if(event.body) {
-          console.log(JSON.decode(event.body));
+        if (event.body) {
+          console.log(JSON.parse(event.body));
         }
 
         const response = {
