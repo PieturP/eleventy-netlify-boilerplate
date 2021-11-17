@@ -155,7 +155,10 @@ const handler = async (event) => {
 
         console.log('shipping!!');
         if (event.body) {
-          console.log(JSON.parse(event.body));
+          const body = JSON.parse(event.body)
+          console.log(body);
+          console.log(body.items)
+
         }
 
         const response = {
