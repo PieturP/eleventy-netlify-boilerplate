@@ -154,22 +154,15 @@ const handler = async (event) => {
       if (route === 'shipping') {
 
         console.log('shipping!!');
-        console.log(event);
+        if(event.body) {
+          console.log(JSON.decode(event.body));
+        }
 
         const response = {
           "rates": [{
             "cost": 10,
             "description": "10$ shipping"
-            }, {
-            "cost": 20,
-            "description": "20$ shipping",
-            "guaranteedDaysToDelivery": 5
-            },
-            {
-              "cost": 25,
-              "description": "25$ shipping",
-              "guaranteedDaysToDelivery": 2
-              },
+            }
           ]
         }
         eleventyConfig.addGlobalData("response", JSON.stringify(response));
