@@ -1,11 +1,15 @@
 <article class="book">
-  <h2 class="book-title">{{ book.title }}</h2>
-  <div class="book-description">{{ book.description }}</div>
-  <div class="book-author">{{ book.author }}</div>
-  <div class="book-type">{{ book.type }}</div>
-  {# <img src="book."> #}
+  <div class="book__cover">
   {%- if book.images|length %}
-    <img src="http://localhost:8055/assets/{{ book.images[0].image_id.file  }}" />
+    <img src="{{books.IMAGE_HOST}}/assets/{{ book.images[0].image_id.file  }}" />
   {%- endif %}
-  <pre>{{ book | dump }}</pre>
+  </div>
+  <div class="book__body">
+    <h2 class="book__title">{{ book.title }}</h2>
+    <div class="book__description">{{ book.description }}</div>
+    <div class="book__author">{{ book.author }}</div>
+    <div class="book__type">{{ book.type }}</div>
+    {# <img src="book."> #}
+    {# <pre>{{ book | dump }}</pre> #}
+  </div>
 </article>

@@ -47,6 +47,7 @@ module.exports = async () => {
 
   return {
     booksData: data.data.data,
-    fetchBookById
+    fetchBookById,
+    IMAGE_HOST: env.DIRECTUS_API_HOST
   }
 };

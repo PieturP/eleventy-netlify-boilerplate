@@ -197,3 +197,16 @@ button {
 
 .booklist a, .booklist a:link, .booklist a:visited { color: inherit; }
 .book pre { white-space: pre-wrap;}
+
+.book {
+	display: flex;
+	flex-direction: row;
+}
+.book__cover {
+	width: 100%;
+	max-width: 200px;
+	margin-right: 1em;
+}
+.book__body {
+	flex: 1;
+}

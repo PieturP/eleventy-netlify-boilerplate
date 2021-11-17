@@ -25,27 +25,32 @@ async function handler(event) {
     query: event.queryStringParameters,
     functionsDir: "./netlify/functions/",
     config: (eleventyConfig) => {
+
+      eleventyConfig.dataFilterSelectors.add("authors"); // ? @FIXME! //@TODO: read docs
+
       if (route === "search") {
         // eleventyConfig.addGlobalData("fetchedBooks", async () => await booksService.searchBooks(event.queryStringParameters) );
 
         let query = event.queryStringParameters;
         let nav = {};
-        const page = parseInt(query.page, 10) || 0;
+        const page = parseInt(query.page, 10) || 1;
         delete query.page
 
-        console.log('@@@@');
-        console.log(query);
         eleventyConfig.addGlobalData("fetchedBooks", async() => {
-          const resp = await booksService.searchBooks(query, page, PAGE_SIZE);
+          const resp = await booksService.searchBooks(query, (page-1), PAGE_SIZE);
           const q = new URLSearchParams(query);
-
+          if (!resp) {
+            return
+          }
           if (resp.meta.filter_count > PAGE_SIZE) {
+            console.log('OPTION FOR NEXT PAGE ADDED')
             nav.next = `/search/?${q}&page=${page + 1}`;
           }
           if (page > 1) {
+            console.log('OPTION FOR PREVIOUS PAGE ADDED')
             nav.previous = `/search/?${q}&page=${page - 1}`;
           }
-          if (nav.next && nav.previous) {
+          if (nav.next || nav.previous) {
             resp.nav = nav;
           }
 
