@@ -211,6 +211,10 @@ button {
 	flex: 1;
 }
 
+.snipcart-checkout { display: inline-block; padding: unset; }
+
+
+
 .snipcart-cart-summary__footer, .snipcart-featured-payment-methods {
 	display: none;
 }

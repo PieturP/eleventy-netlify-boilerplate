@@ -8,11 +8,10 @@ eleventyNavigation:
   order: 0
 ---
 <ol class="booklist">
+{% set link = true %}
 {%- for book in books.booksData %}
 <li>
-  <a href="/books/{{book.id}}">
-    {% include 'components/book.njk' %}
-  </a>
+  {% include 'components/book.njk' %}
 </li>
 {%- endfor %}
 </ol>

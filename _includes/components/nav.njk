@@ -14,5 +14,8 @@
       <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
     </li>
   {%- endfor %}
+  <li>
+    <button class="snipcart-checkout"><span class="snipcart-items-count"></span> Item</button>
+  </li>
   </ul>
 </nav>
