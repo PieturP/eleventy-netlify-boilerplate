@@ -157,7 +157,7 @@ const handler = async (event) => {
         if (event.body) {
           const body = JSON.parse(event.body)
           console.log(body);
-          console.log(body.items)
+          console.log(body.content.items)
 
         }
 
