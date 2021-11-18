@@ -77,6 +77,11 @@ exports.handler = async function (event) {
     console.log({postData});
 
     console.log({items: postData.items});
+    if (postData.items) {
+      for(const item in postData.items) {
+        console.log({item, customFields: item.customFields});
+      }
+    }
 
     // 3. Get shipmentData from postData
     const country = postData.shippingAddress.country;
