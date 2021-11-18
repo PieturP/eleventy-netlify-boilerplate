@@ -76,6 +76,8 @@ exports.handler = async function (event) {
     // 2. Get bookData from postData
     console.log({postData});
 
+    console.log({items: postData.items});
+
     // 3. Get shipmentData from postData
     const country = postData.shippingAddress.country;
     console.log({country});
