@@ -1,4 +1,4 @@
-exports.handler = (event) => {
+exports.handler = async function (event) {
   console.log('Calculate Shipment');
   console.log(event);
   let postData = null;
