@@ -1,8 +1,11 @@
 exports.handler = (event) => {
   console.log(event);
+  let postData = null;
 
   // 1. Grab postData from event
-  if (!event.body) {
+  try {
+    postData = JSON.parse(event.body).content;
+  } catch (e) {
     return {
       statusCode: 400,
       headers: {
@@ -13,7 +16,6 @@ exports.handler = (event) => {
       }),
     };
   }
-  const postData = JSON.parse(event.body).content;
 
   // 2. Get bookData from postData
 
