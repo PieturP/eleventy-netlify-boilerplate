@@ -24,13 +24,13 @@
     {%- endif %}
     {% for keyword in book.keywords %}
       {% if keyword.keyword_id.visible %}
-        <div class="book__keyword"><a href="/search/?keyword={{keyword.keyword_id.id}}">{{ keyword.keyword_id.name }}</a></div>
+        <div class="book__keyword"><a href="/search/?keyword={{ keyword.keyword_id.id }}">{{ keyword.keyword_id.name }}</a></div>
       {% endif %}
     {% endfor %}
 
     <button class="snipcart-add-item"
-      data-item-id="{{book.id}}"
-      data-item-price="{{book.price}}"
+      data-item-id="{{ book.id }}"
+      data-item-price="{{ book.price }}"
       data-item-url="/books/{{ book.id }}"
       data-item-description="{{ book.description }}"
 
@@ -38,10 +38,14 @@
       data-item-min-quantity="1"
       data-item-max-quantity="1"
 
+      data-item-custom1-name="WeightCategory"
+      data-item-custom1-type="hidden"
+      data-item-custom1-value="{{ book.weight }}">
+
       {%- if book.images|length %}
         data-item-image="{{ books.IMAGE_HOST }}/assets/{{ book.images[0].image_id.file }}"
       {%- endif %}
-      data-item-name="{{book.author}} {{book.title}} ">
+      data-item-name="{{ book.author }} {{ book.title }} ">
       Add to cart
     </button>
     {# <img src="book."> #}
