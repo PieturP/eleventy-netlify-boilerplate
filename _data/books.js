@@ -40,6 +40,8 @@ module.exports = async () => {
   return {
     booksData: data.data.data,
     fetchBookById,
-    IMAGE_HOST: env.DIRECTUS_API_HOST
+    // IMAGE_HOST: env.DIRECTUS_API_HOST
+    // IMAGE_HOST: 'https://scrinium.netlify.app/images'
+    IMAGE_HOST: '/images'
   }
 };
