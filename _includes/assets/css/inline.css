@@ -210,3 +210,7 @@ button {
 .book__body {
 	flex: 1;
 }
+
+.snipcart-cart-summary__footer, .snipcart-featured-payment-methods {
+	display: none;
+}
