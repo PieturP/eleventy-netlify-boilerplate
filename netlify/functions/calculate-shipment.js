@@ -1,4 +1,5 @@
 exports.handler = (event) => {
+  console.log('Calculate Shipment');
   console.log(event);
   let postData = null;
 
@@ -6,6 +7,7 @@ exports.handler = (event) => {
   try {
     postData = JSON.parse(event.body).content;
   } catch (e) {
+    console.log(e);
     return {
       statusCode: 400,
       headers: {
