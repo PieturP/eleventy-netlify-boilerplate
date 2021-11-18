@@ -3,13 +3,6 @@ publish = "_site"
 command = "eleventy"
 
 [[redirects]]
-from = "/shipping/"
-to = "/.netlify/functions/serverless"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "serverless"
-
-[[redirects]]
 from = "/search/"
 to = "/.netlify/functions/serverless"
 status = 200

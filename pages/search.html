@@ -19,9 +19,10 @@ eleventyNavigation:
   </div>
 
   {% for book in fetchedBooks.data %}
-    <a href="/books/{{ book.id }}">
+    {# <a href="/books/{{ book.id }}"> #}
+    {% set link = true %}
     {% include 'components/book.njk' %}
-    </a>
+    {# </a> #}
   {% endfor %}
   {% if fetchedBooks.nav %}
     <div class="pagination">

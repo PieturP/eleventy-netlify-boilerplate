@@ -151,25 +151,6 @@ const handler = async (event) => {
         const bookId = path[path.length - 1];
         eleventyConfig.addGlobalData("fetchedBook", async () => await getBook(bookId) );
       }
-      if (route === 'shipping') {
-
-        console.log('shipping!!');
-        if (event.body) {
-          const body = JSON.parse(event.body)
-          console.log(body);
-          console.log(body.content.items)
-
-        }
-
-        const response = {
-          "rates": [{
-            "cost": 10,
-            "description": "10$ shipping"
-            }
-          ]
-        }
-        eleventyConfig.addGlobalData("response", JSON.stringify(response));
-      }
     }
   });
 
