@@ -65,15 +65,20 @@ const searchBooks = async (query, offset = 0, pageSize = 10) => {
 
   const params = getDefaultParams();
 
+  // search
+  if (query.search) {
+    params.append('search', query.search.trim());
+  }
+
   // keywords need relational data filtering:
   if (query.keyword) {
-    params.append('filter[keywords][keyword_id][id]', query.keyword.trim());
+    params.append('filter[keywords][keyword_id][_eq]', query.keyword.trim());
     // ..or less specific via params.append('filter[keywords][keyword_id]', query.keyword.trim()); ?
   }
 
   // other query parameters:
-  for(const key in query ) {
-    if (query[key] && key !== 'keyword') {
+  for(const key in query) {
+    if (query[key] && !['search', 'keyword'].includes(key)) {
       params.append(`filter[${key}][_contains]`, query[key].trim())
     }
   };
@@ -82,6 +87,11 @@ const searchBooks = async (query, offset = 0, pageSize = 10) => {
     params.append('offset', offset * pageSize);
   }
   params.append('limit', pageSize);
+
+  console.log('@@@@@');
+  console.log(params.toString());
+  console.log('@@@@@');
+
 
   try {
     const url =  `${process.env.DIRECTUS_API_HOST}/items/booksdata/?${params.toString()}`
@@ -121,7 +131,7 @@ const handler = async (event) => {
       // @FIXME @TODO: Should this indeed be done in the serverless config?
       // It seemd this could also be done before?...
 
-      eleventyConfig.dataFilterSelectors.add("authors");
+      // eleventyConfig.dataFilterSelectors.add("authors");
       if (route === "search") {
 
         let query = event.queryStringParameters;

@@ -1,0 +1,17 @@
+<article class="book book--small">
+  <a href="/books/{{ book.id }}">
+    <div class="book__cover">
+    {%- if book.images|length %}
+        <img src="{{ env.IMAGE_HOST }}/{{ book.images[0].image_id.file }}" />
+    {%- endif %}
+    </div>
+    <div class="book__body">
+
+        <h2 class="book__title">{{ book.title }}</h2>
+        {# <div class="book__description">{{ book.description }}</div> #}
+        <div class="book__author">{{ book.author }}</div>
+        <div class="book__price">{{ book.price | priceFormatter }}</div>
+        {# <div class="book__type">{{ book.type }}</div> #}
+    </div>
+  </a>
+</article>

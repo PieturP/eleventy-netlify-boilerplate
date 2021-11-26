@@ -19,6 +19,7 @@ module.exports = function(eleventyConfig) {
   //   name: "shipping", // The serverless function name from your permalink object
   //   functionsDir: "./netlify/functions",
   // });
+  eleventyConfig.addFilter("priceFormatter", function(value) { return `€ ${value.toFixed(2)}` });
 
 
 

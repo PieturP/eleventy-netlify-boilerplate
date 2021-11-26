@@ -25,6 +25,6 @@ _generated_by_eleventy_serverless = "serverless"
 
 [[redirects]]
 from = "/images/*"
-to = "https://stettik.engelswoord.nl/:splat"
+to = "https://stettik.engelswoord.nl/assets/:splat"
 status = 200
 force = true

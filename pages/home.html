@@ -7,11 +7,26 @@ eleventyNavigation:
   key: Home
   order: 0
 ---
-<ol class="booklist">
-{% set link = true %}
-{%- for book in books.booksData %}
-<li>
-  {% include 'components/book.njk' %}
-</li>
+
+{% for collection in bookcollections %}
+
+<img src="{{ env.IMAGE_HOST }}/{{ collection.header }}" />
+<h2>{{ collection.title }}</h2>
+<h3>{{ collection.subtitle }}</h3>
+<div class="rte">{{ collection.description | safe }}</div>
+
+
+
+
+<ol class="booklist booklist--small">
+{%- for bookId in collection.books %}
+  {% set book = bookId.book_id %}
+  {%- if book %}  {# book may be empty, when stock < 1 #}
+    <li>
+      {% include 'components/book-small.njk' %}
+    </li>
+  {%- endif %}
 {%- endfor %}
 </ol>
+
+{% endfor %}
