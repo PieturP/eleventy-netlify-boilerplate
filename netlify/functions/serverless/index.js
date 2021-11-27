@@ -110,11 +110,11 @@ const handler = async (event) => {
   const path = event.path.split('/');
   const route = path[path.length - 2];
 
-  // console.log({
-  //   query: event.queryStringParameters,
-  //   path: event.path,
-  //   route: route
-  // })
+  console.log({
+    query: event.queryStringParameters,
+    path: event.path,
+    route: route
+  })
 
   let elev = new EleventyServerless("serverless", {
     path: event.path,
@@ -134,16 +134,17 @@ const handler = async (event) => {
         delete query.page
 
         eleventyConfig.addGlobalData("fetchedBooks", async() => {
-          const resp = await searchBooks(query, (page-1), PAGE_SIZE);
+          const resp = await searchBooks(query, (page - 1), PAGE_SIZE);
           const q = new URLSearchParams(query);
+          // console.log(q)
           if (!resp) {
             return
           }
           if (resp.meta.filter_count > PAGE_SIZE) {
-            nav.next = `/search/?${q}&page=${page + 1}`;
+            nav.next = `/search/?${ q }&page=${ page + 1 }`;
           }
           if (page > 1) {
-            nav.previous = `/search/?${q}&page=${page - 1}`;
+            nav.previous = `/search/?${ q }&page=${ page - 1 }`;
           }
           if (nav.next || nav.previous) {
             resp.nav = nav;
