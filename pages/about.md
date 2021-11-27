@@ -4,7 +4,6 @@ metaDescription: This is a sample meta description. If one is not present in you
 date: 2017-01-01T00:00:00.000Z
 permalink:
   build: /about/index.html
-  serverless: /about/:id
 
 eleventyNavigation:
   key: About

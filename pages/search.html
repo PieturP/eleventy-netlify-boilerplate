@@ -4,7 +4,7 @@ metaDescription: This is a sample meta description. If one is not present in you
 date: 2017-01-01T00:00:00.000Z
 permalink:
   build: /search/index.html
-  serverless: /search
+  serverless: /search-results
 
 eleventyNavigation:
   key: Search
@@ -37,7 +37,7 @@ eleventyNavigation:
 {% else %}
   {# <h1>No search results found</h1> #}
 
-  <form method="GET">
+  <form method="GET" action="/search-results/">
     <input type="author" name="author" placeholder="Author" value="">
     <input type="title" name="title" placeholder="Title" value="">
     <input type="isbn" name="isbn" placeholder="ISBN" value="">

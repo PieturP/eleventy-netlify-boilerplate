@@ -110,6 +110,7 @@ const handler = async (event) => {
   const path = event.path.split('/');
   const route = path[path.length - 2];
 
+  console.log('SERVERLESS HANDLER');
   console.log({
     query: event.queryStringParameters,
     path: event.path,
@@ -126,7 +127,7 @@ const handler = async (event) => {
       // It seemd this could also be done before?...
 
       // eleventyConfig.dataFilterSelectors.add("authors");
-      if (route === "search") {
+      if (route === "search-results") {
 
         let query = event.queryStringParameters;
         let nav = {};
