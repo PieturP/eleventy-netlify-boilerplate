@@ -3,13 +3,13 @@ publish = "_site"
 command = "eleventy"
 
 [[headers]]
-  for = "/*"
-  [headers.values]
-  	cache-control = '''
-    public
-	  max-age=86400,
-	  '''
+for = "/*"
 
+  [headers.values]
+  cache-control = """
+    public
+    max-age=86400,
+    """
 
 [[redirects]]
 from = "/search-results"
