@@ -87,11 +87,6 @@ const searchBooks = async (query, offset = 0, pageSize = 10) => {
   }
   params.append('limit', pageSize);
 
-  console.log('@@@@@');
-  console.log(params.toString());
-  console.log('@@@@@');
-
-
   try {
     const url =  `${process.env.DIRECTUS_API_HOST}/items/booksdata/?${params.toString()}`
     const resp = await axios.get(url, HEADERS);
