@@ -43,7 +43,7 @@
       data-item-custom1-value="{{ book.weight }}"
 
       {%- if book.images|length %}
-        data-item-image="{{ env.IMAGE_HOST }}/assets/{{ book.images[0].image_id.file }}"
+        data-item-image="{{ env.IMAGE_HOST }}/{{ book.images[0].image_id.file }}"
       {%- endif %}
       data-item-name="{{ book.author }} {{ book.title }} ">
       Add to cart
