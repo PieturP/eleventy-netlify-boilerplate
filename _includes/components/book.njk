@@ -24,7 +24,7 @@
     {%- endif %}
     {% for keyword in book.keywords %}
       {% if keyword.keyword_id.visible %}
-        <div class="book__keyword"><a href="/search/?keyword={{ keyword.keyword_id.id }}">{{ keyword.keyword_id.name }}</a></div>
+        <div class="book__keyword"><a href="/search-results/?keyword={{ keyword.keyword_id.id }}">{{ keyword.keyword_id.name }}</a></div>
       {% endif %}
     {% endfor %}
 

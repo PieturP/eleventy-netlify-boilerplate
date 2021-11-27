@@ -142,10 +142,10 @@ const handler = async (event) => {
             return
           }
           if (resp.meta.filter_count > PAGE_SIZE) {
-            nav.next = `/search/?${ q }&page=${ page + 1 }`;
+            nav.next = `/search-results/?${ q }&page=${ page + 1 }`;
           }
           if (page > 1) {
-            nav.previous = `/search/?${ q }&page=${ page - 1 }`;
+            nav.previous = `/search-results/?${ q }&page=${ page - 1 }`;
           }
           if (nav.next || nav.previous) {
             resp.nav = nav;
