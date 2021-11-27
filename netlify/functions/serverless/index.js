@@ -73,7 +73,6 @@ const searchBooks = async (query, offset = 0, pageSize = 10) => {
   // keywords need relational data filtering:
   if (query.keyword) {
     params.append('filter[keywords][keyword_id][_eq]', query.keyword.trim());
-    // ..or less specific via params.append('filter[keywords][keyword_id]', query.keyword.trim()); ?
   }
 
   // other query parameters:

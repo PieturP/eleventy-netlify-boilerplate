@@ -15,7 +15,7 @@ eleventyNavigation:
   <h1>Search Results</h1>
 
   <div class="results">
-    {{ fetchedBooks.meta.filter_count }} results found.
+    {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found.
   </div>
 
   {% for book in fetchedBooks.data %}
