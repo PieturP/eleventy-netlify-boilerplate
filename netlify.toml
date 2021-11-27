@@ -4,9 +4,13 @@ command = "eleventy"
 
 [[headers]]
 for = "/*"
-
   [headers.values]
   Cache-Control = "public, s-max-age=604800"
+
+[[headers]]
+for = "/images/*"
+  [headers.values]
+    Cache-Control= "max-age=31536000, immutable"
 
 [[redirects]]
 from = "/search-results"
