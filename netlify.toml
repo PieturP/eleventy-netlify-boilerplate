@@ -3,7 +3,7 @@ publish = "_site"
 command = "eleventy"
 
 [[redirects]]
-from = "/search/"
+from = "/search"
 to = "/.netlify/functions/serverless"
 status = 200
 force = true
