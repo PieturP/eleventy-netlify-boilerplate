@@ -5,8 +5,6 @@ package-lock.json
 .DS_Store
 netlify/functions/serverless/**
 !netlify/functions/serverless/index.js
-netlify/functions/shipping/**
-!netlify/functions/shipping/index.js
 
 # Local Netlify folder
 .netlify
