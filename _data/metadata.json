@@ -17,6 +17,10 @@
       "title": "Contact"
     },
     {
+      "url": "/mailinglist",
+      "title": "Mailinglist"
+    },
+    {
       "url": "/search",
       "title": "Search"
     }

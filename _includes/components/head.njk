@@ -4,7 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ renderData.title or title or metadata.title }}</title>
   <meta name="description" content="{{ metaDescription or renderData.metaDescription or metadata.description }}">
+
+  <!-- DISABLE ROBOTS INDEXING THIS SITE FOR NOW -->
   <meta name="robots" content="noindex">
+  <!-- END -->
+
   <link rel="preconnect" href="https://app.snipcart.com" />
   <link rel="preconnect" href="https://cdn.snipcart.com" />
   <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />

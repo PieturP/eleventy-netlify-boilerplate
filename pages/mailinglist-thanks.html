@@ -1,0 +1,13 @@
+---
+title: Thank you for subscribing!
+metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
+permalink: "mailinglist/thanks/index.html"
+---
+
+<p>Have a look at our previous Specimina:</p>
+
+<ol>
+{%- for item in specimina %}
+  <li><a href="/specimina/{{ item }}/">Edition {{ item }}</a></li>
+{%- endfor %}
+</ol>

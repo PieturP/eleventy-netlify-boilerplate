@@ -27,7 +27,7 @@ module.exports = async () => {
 		let pagedItems = lodashChunk(tagItems, paginationSize);
 		for( let pageNumber = 0, max = pagedItems.length; pageNumber < max; pageNumber++) {
 			tagMap.push({
-				tagName: `specimina-${spe}`,
+				tagName: spe,
 				pageNumber: pageNumber,
 				pageData: pagedItems[pageNumber]
 			});
