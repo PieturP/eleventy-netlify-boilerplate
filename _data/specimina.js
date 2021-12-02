@@ -19,5 +19,5 @@ module.exports = async () => {
     type: 'json'
   });
 
-  return resp.specimina.reverse();
+  return resp.specimina.sort().reverse();
 };
