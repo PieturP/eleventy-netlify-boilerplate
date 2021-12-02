@@ -4,6 +4,7 @@ const UglifyJS = require("uglify-js");
 const htmlmin = require("html-minifier");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
+const lodashChunk = require("lodash.chunk");
 
 module.exports = function(eleventyConfig) {
 
@@ -51,6 +52,41 @@ module.exports = function(eleventyConfig) {
     }, {});
   });
 
+
+
+
+
+  // eleventyConfig.addCollection("speciminas", collectionApi => {
+
+  //   console.log('!!@@');
+  //   console.log('addCollection speciminas');
+  //   console.log(collectionApi.getAll());
+  //   console.log('@@@###');
+  //   const posts = collectionApi.getAll().filter(item => {
+  //     return "specimina" in item;
+  //   })
+
+  //   console.log(posts);
+
+  //   const tags = posts
+  //     .map(item => item.tags)
+  //   const uniqueTags = [...new Set(tags)]
+  //   const pageSize = 5
+
+  //   console.log(uniqueTags);
+
+  //   return uniqueTags.map(tag => {
+  //     const postsWithTag = posts.filter(post => post.tags.includes(tag))
+
+  //     return lodashChunk(postsWithTag, pageSize)
+  //       .map((item, index) => ({
+  //         tagName: tag,
+  //         pageNumber: index,
+  //         pageData: item
+  //       }))
+  //   }).flat()
+  // })
+
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
@@ -76,16 +112,15 @@ module.exports = function(eleventyConfig) {
     return minified.code;
   });
 
+  eleventyConfig.addNunjucksFilter("where", function(obj, key, value) {
+    obj.pages = obj.pages.filter(item => item[key] === value);
+    obj.items = obj.items.filter(item => item[key] === value);
+    return obj;
+  }
+  );
+
   // Minify HTML output
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-    if (outputPath && outputPath.indexOf(".html") > -1) {
-      let minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true
-      });
-      return minified;
-    }
     return content;
   });
 

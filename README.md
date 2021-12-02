@@ -123,3 +123,39 @@ DEBUG=* npx @11ty/eleventy
 This is an ongoing project and I welcome contributions and suggestions! Feel free to submit a PR.
 
 If you need any help with setting up Netlify CMS, you can reach out to the Netlify team in the [Netlify CMS Gitter](https://gitter.im/netlify/netlifycms).
+
+
+
+```sql
+
+-- Fetch all Specimina and related data.
+-- Should be used instead of Directus' native query
+
+SELECT
+	specimina.id,
+	specimina.number,
+	specimina.remark,
+	books_specimina.book_id,
+	booksdata.id,
+	booksdata.author,
+	booksdata.title,
+	booksdata.description,
+	booksdata.price,
+	booksdata.type,
+	images.file,
+	keywords.name AS keyword
+FROM
+	specimina
+	JOIN books_specimina ON books_specimina.specimina_id = specimina.id
+	JOIN booksdata ON books_specimina.book_id = booksdata.id
+	JOIN books_images ON books_specimina.book_id = books_images.book_id
+	JOIN images ON books_images.image_id = images.id
+	JOIN books_keywords ON books_specimina.book_id = books_keywords.book_id
+	JOIN keywords ON books_keywords.keyword_id = keywords.id
+WHERE
+	booksdata.stock > 0
+AND
+	keywords.visible = true
+
+ORDER BY
+	number DESC;

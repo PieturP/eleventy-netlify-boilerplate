@@ -8,3 +8,6 @@ netlify/functions/serverless/**
 
 # Local Netlify folder
 .netlify
+
+# Local cache
+.cache

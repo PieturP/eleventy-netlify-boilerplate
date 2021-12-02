@@ -1,0 +1,17 @@
+---
+pagination:
+  data: booksPerSpecimina
+  size: 1
+  alias: specimina
+permalink: specimina/{{ specimina.tagName }}/{% if specimina.pageNumber %}{{ specimina.pageNumber + 1 }}/{% endif %}
+---
+
+<a href="/specimina/">Back to all specimina</a>
+
+{% include 'components/pagination-nav-specimina.njk' %}
+<hr>
+
+
+{% for book in specimina.pageData %}
+  {% include 'components/book.njk' %}
+{% endfor %}

@@ -110,12 +110,12 @@ const handler = async (event) => {
   const path = event.path.split('/');
   const route = path[path.length - 2];
 
-  console.log('SERVERLESS HANDLER');
-  console.log({
-    query: event.queryStringParameters,
-    path: event.path,
-    route: route
-  })
+  // console.log('SERVERLESS HANDLER');
+  // console.log({
+  //   query: event.queryStringParameters,
+  //   path: event.path,
+  //   route: route
+  // })
 
   let elev = new EleventyServerless("serverless", {
     path: event.path,
