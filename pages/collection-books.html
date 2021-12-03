@@ -1,0 +1,16 @@
+---
+eleventyComputed:
+  title: Collection {{ collection.tagName }}
+pagination:
+  data: booksPerCollection
+  size: 1
+  alias: collection
+permalink: collections/{{ collection.tagName }}/{% if collection.pageNumber %}{{ collection.pageNumber + 1 }}/{% endif %}
+---
+{% for book in collection.pageData %}
+  {% set book = book.book_id %}
+  {% include 'components/book.njk' %}
+  {# {{ book | dump }} #}
+{% endfor %}
+
+{% include 'components/pagination-nav-collections.njk' %}

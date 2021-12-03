@@ -1,0 +1,13 @@
+{% set current = collection.pageNumber + 1 %}
+{% set tag = pagination.items[0].tagName %}
+{% set filtered = pagination | where("tagName", tag) %}
+
+{% if filtered.pages | length > 1 %}
+<nav aria-labelledby="pager">
+  <h2 id="pager">Page {{ (current) }} of {{ filtered.pages | length }}</h2>
+  <ol>
+    <li>{% if filtered.href.previous and current != 1 %}<a href="{{ filtered.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+    <li>{% if filtered.href.next and current != filtered.pages | length %}<a href="{{ filtered.href.next }}">Next</a>{% else %}Next{% endif %}</li>
+  </ol>
+</nav>
+{% endif %}

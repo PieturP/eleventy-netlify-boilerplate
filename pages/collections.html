@@ -1,0 +1,14 @@
+---
+title: Specimina Septimanalia
+metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
+permalink: "collections/index.html"
+---
+
+
+<h2>Collections</h2>
+<p>Have a look at our collections:</p>
+<ol>
+{% for item in bookcollections %}
+  <li><a href="/collections/{{ item.title | slugify }}/">{{item.title}}</a></li>
+{% endfor %}
+</ol>
