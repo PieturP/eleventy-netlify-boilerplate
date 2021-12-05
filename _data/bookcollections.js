@@ -1,16 +1,12 @@
 const dotenv = require('dotenv');
-const axios = require('axios');
+const Cache = require("@11ty/eleventy-cache-assets");
+const options = require('../fetchOptions');
 
 module.exports = async () => {
 
   dotenv.config();
 
-  const options = {
-    headers: {
-      'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
-    }
-  }
-  const resp = await axios.get(
+  const resp = await Cache(
     `${process.env.DIRECTUS_API_HOST}/items/collection` +
     `?fields=*,books.book_id.*,books.book_id.images.image_id.*`
   , options);

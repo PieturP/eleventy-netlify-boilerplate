@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const Cache = require("@11ty/eleventy-cache-assets");
 const lodashChunk = require('lodash/chunk');
 const slugify = require("@sindresorhus/slugify");
+const options = require('../fetchOptions');
 
 module.exports = async () => {
 
@@ -10,15 +11,7 @@ module.exports = async () => {
   const resp = await Cache(
     `${process.env.DIRECTUS_API_HOST}/items/collection` +
     `?fields=*,books.book_id.*,books.book_id.images.image_id.*`,
-    {
-      duration: '1h',
-      type: 'json',
-      fetchOptions: {
-        headers: {
-          'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
-        }
-      }
-    }
+    options
   );
 
   const collections = resp.data;

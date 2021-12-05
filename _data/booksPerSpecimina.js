@@ -1,17 +1,21 @@
 const dotenv = require('dotenv');
 const Cache = require("@11ty/eleventy-cache-assets");
 const lodashChunk = require('lodash/chunk');
+const options = require('../fetchOptions');
 
 module.exports = async () => {
 
   dotenv.config();
 
-  const resp = await Cache(`${process.env.DIRECTUS_API_HOST}/specimina`, {
-    duration: '1h',
-    type: 'json'
-  });
+	console.log('!!!');
+console.log(options);
+
+  const resp = await Cache(`${process.env.DIRECTUS_API_HOST}/specimina`, options);
+
+console.log('----------------------');
 
   const books =  resp.books;
+
   const specimina = resp.specimina.sort();
   // let booksPerSpecimina = [];
 	const paginationSize = 10;
