@@ -7,24 +7,13 @@ module.exports = async () => {
 
   dotenv.config();
 
-	console.log('!!!');
-console.log(options);
-
   const resp = await Cache(`${process.env.DIRECTUS_API_HOST}/specimina`, options);
-
-console.log('----------------------');
-
   const books =  resp.books;
-
   const specimina = resp.specimina.sort();
-  // let booksPerSpecimina = [];
 	const paginationSize = 10;
+  // let booksPerSpecimina = [];
 
   let tagMap = [];
-
-  // for (let spe of specimina) {
-  //   booksPerSpecimina[spe] = books.filter(book => book.specimina.includes(spe));
-	// }
 
 	for( let spe of specimina) {
 		let tagItems = books.filter(b => b.specimina.includes(spe));
@@ -40,10 +29,6 @@ console.log('----------------------');
 
 	// console.log(tagMap);
 	return tagMap;
-
-
-
-
 
   // let tagSet = new Set();
 	// books.map(function(item) {

@@ -18,4 +18,5 @@ module.exports = async () => {
   const resp = await Cache(`${process.env.DIRECTUS_API_HOST}/specimina`, options);
 
   return resp.specimina.sort().reverse();
+
 };
