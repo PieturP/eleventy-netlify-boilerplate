@@ -1,12 +1,17 @@
 ---
 eleventyComputed:
-  title: Collection {{ collection.tagName }}
+  title: "{{ collection.title }}"
 pagination:
   data: booksPerCollection
   size: 1
   alias: collection
 permalink: collections/{{ collection.tagName }}/{% if collection.pageNumber %}{{ collection.pageNumber + 1 }}/{% endif %}
 ---
+
+<h3>{{ collection.subtitle }}</h3>
+<div class="rte">{{ collection.description | safe }}</div>
+<hr>
+
 {% for book in collection.pageData %}
   {% set book = book.book_id %}
   {% include 'components/book.njk' %}

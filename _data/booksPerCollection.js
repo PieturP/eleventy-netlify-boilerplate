@@ -34,6 +34,10 @@ module.exports = async () => {
     let pagedItems = lodashChunk(tagItems, paginationSize);
     for( let pageNumber = 0, max = pagedItems.length; pageNumber < max; pageNumber++) {
       tagMap.push({
+        title: item.title,
+        subtitle: item.subtitle,
+        description: item.description,
+
         tagName: slugify(item.title),
         pageNumber: pageNumber,
         pageData: pagedItems[pageNumber]

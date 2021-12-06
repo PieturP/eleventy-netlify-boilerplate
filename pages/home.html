@@ -8,25 +8,35 @@ eleventyNavigation:
   order: 0
 ---
 
-{% for collection in bookcollections %}
+{%- for collection in bookcollections %}
 
-<img src="{{ env.IMAGE_HOST }}/{{ collection.header }}" />
-<h2>{{ collection.title }}</h2>
-<h3>{{ collection.subtitle }}</h3>
-<div class="rte">{{ collection.description | safe }}</div>
+  <img src="{{ env.IMAGE_HOST }}/{{ collection.header }}" />
+
+  <a href="/collections/{{collection.title | slugify}}"><h2>{{ collection.title }}</h2></a>
+  <h3>{{ collection.subtitle }}</h3>
+  <div class="rte">{{ collection.description | safe }}</div>
 
 
+  {% set count = 0 %}
+  {% set readMore = false %}
+  <ol class="booklist booklist--small">
+  {%- for bookId in collection.books %}
+      {% set book = bookId.book_id %}
+      {%- if book %}  {# book may be empty, when stock < 1 #}
+        {% set count = count + 1 %}
+        {%- if count < 11 %}
+          <li>
+            {% include 'components/book-small.njk' %}
+          </li>
+        {%- else %}
+          {% set readMore = true %}
+        {%- endif %}
+      {%- endif %}
+  {%- endfor %}
+  </ol>
 
-
-<ol class="booklist booklist--small">
-{%- for bookId in collection.books %}
-  {% set book = bookId.book_id %}
-  {%- if book %}  {# book may be empty, when stock < 1 #}
-    <li>
-      {% include 'components/book-small.njk' %}
-    </li>
+  {%- if readMore %}
+    <a href="/collections/{{collection.title | slugify}}">View more...</a>
   {%- endif %}
+  <hr>
 {%- endfor %}
-</ol>
-
-{% endfor %}
