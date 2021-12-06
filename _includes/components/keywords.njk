@@ -1,5 +1,5 @@
-<pre>
+<ol class="keywordlist">
 {%- for keyword in keywords %}
-  {{ keyword.name }}
+  <li><a href="/search-results/?keyword={{keyword.id}}">{{ keyword.name }}</a></li>
 {%- endfor %}
-</pre>
+</ol>

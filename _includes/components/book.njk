@@ -26,7 +26,7 @@
       <div class="book__note">{{ book.note }}</div>
       <div class="book__price">{{ book.price | priceFormatter }}</div>
       <div class="book__type">{{ book.type }}</div>
-      <div class="book__isbn">{{ book.isbn }}</div>
+      <div class="book__isbn">ISBN: {{ book.isbn }}</div>
     {%- if link %}
       </a>
     {%- endif %}

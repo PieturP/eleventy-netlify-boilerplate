@@ -1,5 +1,4 @@
 ---
-title: Search
 metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
 date: 2017-01-01T00:00:00.000Z
 permalink:
@@ -10,9 +9,12 @@ eleventyNavigation:
   key: Search
   order: 4
 
+eleventyComputed:
+  title: "{{  'Search Results' if fetchedBooks else 'Search' }}"
+
+
 ---
 {% if fetchedBooks %}
-  <h1>Search Results</h1>
 
   <div class="results">
     {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found.
