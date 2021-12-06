@@ -13,7 +13,7 @@ const options = {
 }
 
 if (process.env.ELEVENTY_SERVERLESS) {
-  options.directory = "cache";
+  options.directory = "/tmp/.cache/";
 }
 
 module.exports = options;
