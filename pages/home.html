@@ -8,9 +8,11 @@ eleventyNavigation:
   order: 0
 ---
 
+{% include 'components/keywords.njk' %}
+
 {%- for collection in bookcollections %}
 
-  <img src="{{ env.IMAGE_HOST }}/{{ collection.header }}" />
+  <img src="{{ env.IMAGE_HOST }}/{{ collection.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
 
   <a href="/collections/{{collection.title | slugify}}"><h2>{{ collection.title }}</h2></a>
   <h3>{{ collection.subtitle }}</h3>
