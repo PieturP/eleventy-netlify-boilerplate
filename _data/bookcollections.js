@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const Cache = require("@11ty/eleventy-cache-assets");
-const options = require('../fetchOptions');
+const options = require('./fetchOptions');
 
 module.exports = async () => {
 
@@ -11,5 +11,5 @@ module.exports = async () => {
     `?fields=*,books.book_id.*,books.book_id.images.image_id.*`
   , options);
 
-  return resp.data.data
+  return resp.data
 };

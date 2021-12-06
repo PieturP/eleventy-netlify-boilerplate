@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const Cache = require("@11ty/eleventy-cache-assets");
 const lodashChunk = require('lodash/chunk');
-const options = require('../fetchOptions');
+const options = require('./fetchOptions');
 
 module.exports = async () => {
 
