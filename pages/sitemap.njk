@@ -1,0 +1,12 @@
+---
+permalink: /sitemap.txt
+eleventyExcludeFromCollections: true
+layout: false
+---
+{%- for page in collections.all %}
+{{env.ROOT_DOMAIN}}{{ page.url | url }}
+{%- endfor %}
+{%- for item in specimina %}
+{{env.ROOT_DOMAIN}}/specimina/{{ item }}/
+{%- endfor %}
+{{ externalSitemap }}
