@@ -30,9 +30,8 @@ _generated_by_eleventy_serverless = "serverless"
 
 [[redirects]]
 from = "/books/*"
-to = "https://scrinium.netlify.app/book/:splat"
+to = "/book/:splat"
 status = 200
-force = true
 
 [[redirects]]
 from = "/images/*"
