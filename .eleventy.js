@@ -136,7 +136,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.on('afterBuild', () => {
     console.log('afterBuild!');
-    fs.copyFileSync('./netlify-tryout.toml', './netlify.toml');
+    fs.copyFileSync('./_site/netlify-tryout.toml', './netlify.toml');
     // Run me after the build ends
   });
 
@@ -145,6 +145,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("static/img");
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("_includes/assets/css/inline.css");
+  eleventyConfig.addPassthroughCopy("netlify-tryout.toml");
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
