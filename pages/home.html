@@ -8,40 +8,20 @@ eleventyNavigation:
   order: 0
 ---
 
-{%- for collection in bookcollections %}
-
-
-
-  <img src="{{ env.IMAGE_HOST }}/{{ collection.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
-  <a href="/collections/{{collection.title | slugify}}"><h2>{{ collection.title }}</h2></a>
-
-  <h3>{{ collection.subtitle }}</h3>
-  <div class="rte">{{ collection.description | safe }}</div>
-
-  {% set count = 0 %}
-  {% set readMore = false %}
-  <ol class="booklist booklist--small">
-  {%- for bookId in collection.books %}
-      {% set book = bookId.book_id %}
-      {%- if book %}  {# book may be empty, when stock < 1 #}
-        {% set count = count + 1 %}
-        {%- if count < 11 %}
-          <li>
-            {% include 'components/book-small.njk' %}
-          </li>
-        {%- else %}
-          {% set readMore = true %}
-        {%- endif %}
-      {%- endif %}
-  {%- endfor %}
-  </ol>
-
-  {%- if readMore %}
-    <a href="/collections/{{collection.title | slugify}}">View more...</a>
-  {%- endif %}
-  <hr>
+{%- for component in homepageItems.items %}
+{# <pre>{{ component | dump }}</pre><hr> #}
+{% set item = component.item %}
+{%- include 'components/homepage-section-' + component.collection + '.njk' %}
 {%- endfor %}
 
+{# {%- for collection in bookcollections %} #}
+  {# <img src="{{ env.IMAGE_HOST }}/{{ collection.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" /> #}
+  {# <a href="/collections/{{collection.title | slugify}}"><h2>{{ collection.title }}</h2></a> #}
+  {# <h3>{{ collection.subtitle }}</h3> #}
+  {# <div class="rte">{{ collection.description | safe }}</div> #}
+  {# <hr> #}
+{# {%- endfor %} #}
+{#
 <div class="full-width full-width--white">
 <h3>USP's</h3>
 <ol>
@@ -51,7 +31,6 @@ eleventyNavigation:
 <ol>...</ol>
 </o>
 </div>
-
 <div class="">
 <h3>You might also want to</h3>
 <ol>
@@ -60,4 +39,4 @@ eleventyNavigation:
   <li>Use our advanced <a href="/search">search</a> form</li>
   <li>Browse our <a href="#TODO#">Facebook</a> page</li>
   <li>Get to know more <a href="/about">about</a> us</li>
-</div>
+</div> #}

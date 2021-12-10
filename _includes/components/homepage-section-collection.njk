@@ -1,0 +1,30 @@
+<section class="full-width">
+<h2>{{ item.title }}</h2>
+<h3>{{ item.subtitle }}</h3>
+<div class="rte">{{item.description | safe}}</div>
+
+
+{% set itemsBooks = bookcollections | findBy('id', item.id) %}
+
+ {% set count = 0 %}
+  {% set readMore = false %}
+  <ol class="booklist booklist--small">
+  {%- for bookItem in itemsBooks.books %}
+      {% set book = bookItem.book_id %}
+      {%- if book %}  {# book may be empty, when stock < 1 #}
+        {% set count = count + 1 %}
+        {%- if count < 11 %}
+          <li>
+            {% include 'components/book-small.njk' %}
+          </li>
+        {%- else %}
+          {% set readMore = true %}
+        {%- endif %}
+      {%- endif %}
+  {%- endfor %}
+  </ol>
+
+  {%- if readMore %}
+    <a href="/collections/{{collection.title | slugify}}">View more...</a>
+  {%- endif %}
+</section>

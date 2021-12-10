@@ -113,12 +113,16 @@ module.exports = function(eleventyConfig) {
     return minified.code;
   });
 
+  // @TODO: refactor this.
+  // @FIXME: ugly
   eleventyConfig.addNunjucksFilter("where", function(obj, key, value) {
     obj.pages = obj.pages.filter(item => item[key] === value);
     obj.items = obj.items.filter(item => item[key] === value);
     return obj;
-  }
-  );
+  });
+
+  // find obj by key containting value
+  eleventyConfig.addNunjucksFilter("findBy", (arr, key, value) => arr.filter(item => item[key] === value)[0]);
 
   // Minify HTML output
   eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
