@@ -22,16 +22,11 @@ force = true
 _generated_by_eleventy_serverless = "serverless"
 
 [[redirects]]
-from = "/book/:id"
+from = "/books/:id"
 to = "/.netlify/functions/serverless"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "serverless"
-
-[[redirects]]
-from = "/books/*"
-to = "/book/:splat"
-status = 200
 
 [[redirects]]
 from = "/images/*"

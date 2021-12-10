@@ -163,7 +163,7 @@ const handler = async (event) => {
           return resp;
         });
       }
-      if (route === "book") { // books
+      if (route === "books") {
         const bookId = path[path.length - 1];
         eleventyConfig.addGlobalData("fetchedBook", async () => await getBook(bookId) );
       }
