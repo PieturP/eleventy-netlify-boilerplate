@@ -134,11 +134,14 @@ module.exports = function(eleventyConfig) {
   });
 
 
-  eleventyConfig.on('afterBuild', () => {
-    console.log('afterBuild!');
-    fs.copyFileSync('./_site/netlify-tryout.toml', './netlify.toml');
-    // Run me after the build ends
-  });
+  if (process.env.ELEVENTY_SERVERLESS) {
+    eleventyConfig.on('afterBuild', () => {
+      console.log('afterBuild!');
+      console.log(fs.copyFileSync('./netlify-tryout.toml', './netlify.toml'));
+      console.log('afterBuild done');
+      // Run me after the build ends
+    });
+  }
 
   // Don't process folders with static assets e.g. images
   eleventyConfig.addPassthroughCopy("favicon.ico");
