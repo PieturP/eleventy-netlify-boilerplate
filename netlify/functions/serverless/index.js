@@ -120,12 +120,12 @@ const handler = async (event) => {
   const path = event.path.split('/');
   const route = path[path.length - 2];
 
-  // console.log('SERVERLESS HANDLER');
-  // console.log({
-  //   query: event.queryStringParameters,
-  //   path: event.path,
-  //   route: route
-  // })
+  console.log('SERVERLESS HANDLER');
+  console.log({
+    // query: event.queryStringParameters,
+    path: event.path,
+    route: route
+  })
 
   let elev = new EleventyServerless("serverless", {
     path: event.path,
@@ -163,7 +163,7 @@ const handler = async (event) => {
           return resp;
         });
       }
-      if (route === "books") {
+      if (route === "book") { // books
         const bookId = path[path.length - 1];
         eleventyConfig.addGlobalData("fetchedBook", async () => await getBook(bookId) );
       }
