@@ -134,7 +134,7 @@ module.exports = function(eleventyConfig) {
   });
 
 
-  if (process.env.ELEVENTY_SERVERLESS) {
+  if (!process.env.ELEVENTY_SERVERLESS) {
     eleventyConfig.on('afterBuild', () => {
       console.log('afterBuild!');
       console.log(fs.copyFileSync('./netlify-tryout.toml', './netlify.toml'));
