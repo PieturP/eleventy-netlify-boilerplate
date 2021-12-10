@@ -7,7 +7,7 @@ module.exports = async () => {
   dotenv.config();
 
   const resp = await Cache(
-    `${process.env.DIRECTUS_API_HOST}/items/keywords?fields=id,name&sort=name&limit=500`
+    `${process.env.DIRECTUS_API_HOST}/items/keywords?fields=id,name&sort=name&limit=500&filter[visible]=true`
   , options);
 
   return resp.data

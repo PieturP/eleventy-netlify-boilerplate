@@ -65,19 +65,24 @@ const searchBooks = async (query, offset = 0, pageSize = 10) => {
 
   const params = getDefaultParams();
 
+  let hasInput = false;
+
   // search
-  if (query.search) {
+  if (query.search && query.search.trim()) {
+    hasInput = true;
     params.append('search', query.search.trim());
   }
 
   // keywords need relational data filtering:
-  if (query.keyword) {
+  if (query.keyword && query.keyword.trim()) {
+    hasInput = true;
     params.append('filter[keywords][keyword_id][_eq]', query.keyword.trim());
   }
 
   // other query parameters:
   for(const key in query) {
     if (query[key] && !['search', 'keyword'].includes(key)) {
+      hasInput = true;
       params.append(`filter[${key}][_contains]`, query[key].trim())
     }
   };
@@ -86,6 +91,11 @@ const searchBooks = async (query, offset = 0, pageSize = 10) => {
     params.append('offset', offset * pageSize);
   }
   params.append('limit', pageSize);
+
+  if (!hasInput) {
+    return ;
+    // throw new Error('No search input provided');
+  }
 
   try {
     const url =  `${process.env.DIRECTUS_API_HOST}/items/booksdata/?${params.toString()}`

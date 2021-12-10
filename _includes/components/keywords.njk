@@ -1,5 +1,5 @@
 <ol class="keywordlist">
 {%- for keyword in keywords %}
-  <li><a href="/search-results/?keyword={{keyword.id}}">{{ keyword.name }}</a></li>
+  <li><a href="/search-results/?keyword={{keyword.id}}#{{keyword.name | slugify}}">{{ keyword.name }}</a></li>
 {%- endfor %}
 </ol>
