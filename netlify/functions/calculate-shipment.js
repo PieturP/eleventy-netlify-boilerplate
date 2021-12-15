@@ -138,6 +138,7 @@ function calculateWorldwideShipment(nrOfItems, nrOfExpensiveItems, heavyCount, e
 
 
 async function fetchBook(book) {
+  console.log({book});
   const options = {
     headers: {
       'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
