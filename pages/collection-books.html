@@ -12,6 +12,7 @@ permalink: collections/{{ collection.tagName }}/{% if collection.pageNumber %}{{
 <div class="rte">{{ collection.description | safe }}</div>
 <hr>
 
+{% set link = true %}
 {% for book in collection.pageData %}
   {% set book = book.book_id %}
   {% include 'components/book.njk' %}
