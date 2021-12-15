@@ -7,8 +7,8 @@ eleventyNavigation:
   key: Home
   order: 0
 ---
-
-{%- for component in homepageItems.items %}
+{% set page = pageItems | findBy('name', 'Homepage') %}
+{%- for component in page.items %}
   {% set item = component.item %}
   {%- include 'components/homepage-section-' + component.collection + '.njk' %}
 {%- endfor %}
