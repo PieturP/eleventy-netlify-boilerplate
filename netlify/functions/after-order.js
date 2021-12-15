@@ -25,7 +25,7 @@ async function updateBook(book) {
 
 exports.handler = async function (event) {
   console.log('After Order Hook');
-  // console.log(event);
+  console.log(event);
 
   // 1. Grab postData from event
   try {
