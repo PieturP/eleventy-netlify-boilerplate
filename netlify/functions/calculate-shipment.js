@@ -1,3 +1,10 @@
+const axios = require('axios');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const PRICE_EXPENSIVE = 65;
+const WEIGHT_HEAVY = 'heavy';
+const WEIGHT_EXTRA_HEAVY = 'extra-heavy';
 
 function isEurope(country) {
   const europe = [
@@ -32,81 +39,169 @@ function isEurope(country) {
   return europe.includes(country);
 }
 
-function calculateDutchShipment(nrOfItems, nrOfExpensiveItems) {
+function calculateDutchShipment(nrOfItems, nrOfExpensiveItems, heavyCount, extraHeavyCount) {
   let costs;
   switch (nrOfItems){
     case 1:
-      costs = 4.0;
+      costs = 4.5;
     break;
     case 2:
-      costs = 6.0;
+      costs = 7.0;
     break;
     case 3:
     case 4:
     case 5:
-      costs = 8.0;
+      costs = 9.0;
     break;
     case 6:
     default:
-      costs = 10.0;
+      costs = 11.0;
     break;
   }
   if (nrOfExpensiveItems > 0) {
     if (nrOfExpensiveItems < 6) {
-      costs = 8.0;
+      costs = 9.0;
     } else {
-      costs = 10.0;
+      costs = 11.0;
     }
   }
   return costs;
 }
 
+function calculateEuropeanShipment(nrOfItems, nrOfExpensiveItems, heavyCount, extraHeavyCount) {
+  let costs;
+  switch(nrOfItems){
+    case 1:
+            costs = 10.0;
+    break;
+    case 2:
+            costs = 12.0;
+    break;
+    case 3:
+            costs = 14.0;
+    break;
+    case 4:
+            costs = 16.0;
+    break;
+    case 5:
+            costs = 18.0;
+    break;
+    case 6:
+            costs = 20.0;
+    break;
+    case 7:
+    default:
+            costs = 22.0;
+    break;
+  }
+  return costs;
+}
+
+function calculateWorldwideShipment(nrOfItems, nrOfExpensiveItems, heavyCount, extraHeavyCount) {
+  let costs;
+  let extraCosts;
+  switch(nrOfItems){
+    case 1:
+            costs = 15.0;
+    break;
+    case 2:
+            costs = 25.0;
+    break;
+    case 3:
+            costs = 30.0;
+    break;
+    case 4:
+            costs = 35.0;
+    break;
+    case 5:
+            costs = 40.0;
+    break;
+    case 6:
+            costs = 45.0;
+    break;
+    case 7:
+    // case 8:
+    // case 9:
+    // case 10:
+    default:
+            costs = 50.0;
+    break;
+  }
+  if (heavyCount > 0 || expensiveCount > 0) {
+      extraCosts = 10.0;
+  }
+  if (extraHeavyCount > 0) {
+      extraCosts = 15.0;
+  }
+  return (costs + extraCosts);
+}
+
+
+async function fetchBook(book) {
+  const options = {
+    headers: {
+      'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
+    }
+  }
+  try {
+    const resp = await axios.get(
+      `${process.env.DIRECTUS_API_HOST}/items/booksdata/${book.id}`
+      + `?filter[stock][_gte]=1`
+      + `&fields=id,price,weight,title`
+    , options);
+    return resp.data.data;
+  } catch (e) {
+    console.log(e);
+    throw new Error(`Item "${book.name}" not found or out of stock`);
+  }
+}
 
 
 exports.handler = async function (event) {
   console.log('Calculate Shipment');
-  console.log(event);
-  let postData = null;
+  // console.log(event);
 
   // 1. Grab postData from event
   try {
-    postData = JSON.parse(event.body).content;
+    const postData = JSON.parse(event.body).content;
 
-
-    // 2. Get bookData from postData
-    console.log({postData});
-
-    console.log({items: postData.items});
-    if (postData.items) {
-      for(const item of postData.items) {
-        console.log({item, customFields: item.customFields});
-      }
-    }
-
-    // 3. Get shipmentData from postData
     const country = postData.shippingAddress.country;
-    console.log({country});
 
     let itemCount = postData.items.length;
     let expensiveItemCount = 0;
+    let heavyCount = 0;
+    let extraHeavyCount = 0;
 
-    // 5. Fetch book(s) mentioned in bookData
+    if (postData.items) {
+      for(const { item } of postData.items) {
+        const book = await fetchBook(item);
+        heavyCount += (book.weight === WEIGHT_HEAVY) ? 1 : 0;
+        extraHeavyCount += (book.weight === WEIGHT_EXTRA_HEAVY) ? 1 : 0;
+        expensiveItemCount += (book.price > PRICE_EXPENSIVE) ? 1 : 0;
+      }
+    }
 
-    // 6. Get book weight from fetched books
 
     // 7. Calculate shipment costs
     let rate = 0;
     if (country === 'NL' || country === 'DE') {
-      rate = calculateDutchShipment(itemCount, expensiveItemCount);
+      rate = calculateDutchShipment(itemCount, expensiveItemCount, heavyCount, extraHeavyCount);
     } else if (isEurope(country)) {
-      rate = calculateDutchShipment(itemCount, expensiveItemCount);
+      rate = calculateEuropeanShipment(itemCount, expensiveItemCount, heavyCount, extraHeavyCount);
     } else {
-      rate = calculateDutchShipment(itemCount, expensiveItemCount);
+      rate = calculateWorldwideShipment(itemCount, expensiveItemCount, heavyCount, extraHeavyCount);
     }
 
     const response = {
-      "rates": [{ "cost": rate, "description": `€ ${rate}.00 shipping costs` }]
+      // country,
+      // itemCount,
+      // expensiveItemCount,
+      // heavyCount,
+      // extraHeavyCount,
+      "rates": [{ "cost": rate, "description": `€ ${ rate.toFixed(2, 0) } shipping costs` }]
     }
+
+    console.log('response: ', response);
 
     return {
       statusCode: 200,
@@ -124,7 +219,7 @@ exports.handler = async function (event) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        message: 'No postData found in event',
+        message: 'Error calculating shipment costs. ' + e.message,
       }),
     };
   }
