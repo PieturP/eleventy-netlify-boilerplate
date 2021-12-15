@@ -78,7 +78,6 @@
     "user": null,
     "items": [
       {
-        "item": {
           "paymentSchedule": [
             null
           ],
@@ -122,10 +121,8 @@
           "hasDimensions": false,
           "hasTaxesIncluded": false,
           "totalPriceWithoutDiscountsAndTaxes": 83.51
-        }
       },
       {
-        "item": {
           "paymentSchedule": {
             "interval": 0,
             "intervalCount": 1,
@@ -172,21 +169,7 @@
           "hasDimensions": false,
           "hasTaxesIncluded": false,
           "totalPriceWithoutDiscountsAndTaxes": 14.22
-        },
-        "customFields": [
-          {
-            "name": "WeightCategory",
-            "placeholder": "",
-            "displayValue": "",
-            "type": "hidden",
-            "options": "",
-            "required": false,
-            "value": "",
-            "operation": null,
-            "optionsArray": null
-          }
-        ]
-      }
+        }
     ],
     "refunds": [],
     "lang": "en",

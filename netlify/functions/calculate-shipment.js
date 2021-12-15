@@ -176,7 +176,7 @@ exports.handler = async function (event) {
     let extraHeavyCount = 0;
 
     if (postData.items) {
-      for(const { item } of postData.items) {
+      for(const item  of postData.items) {
         const book = await fetchBook(item);
         heavyCount += (book.weight === WEIGHT_HEAVY) ? 1 : 0;
         extraHeavyCount += (book.weight === WEIGHT_EXTRA_HEAVY) ? 1 : 0;
