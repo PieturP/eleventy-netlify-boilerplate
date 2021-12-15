@@ -166,6 +166,8 @@ exports.handler = async function (event) {
   try {
     const postData = JSON.parse(event.body).content;
 
+    console.log(postData);
+
     const country = postData.shippingAddress.country;
 
     let itemCount = postData.items.length;
