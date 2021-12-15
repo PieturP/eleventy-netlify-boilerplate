@@ -2,6 +2,13 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 dotenv.config();
 
+async function verifyRequestToken(token) {
+  console.log({token});
+  const resp = await axios.get(`https://app.snipcart.com/api/requestvalidation/${token}`);
+
+  console.log({resp});
+
+}
 
 async function updateBook(book) {
   // const options = {
@@ -24,8 +31,13 @@ async function updateBook(book) {
 
 
 exports.handler = async function (event) {
+
+  await verifyRequestToken(event.headers['x-snipcart-requesttoken']);
+
   console.log('After Order Hook');
-  console.log(event);
+
+
+  // console.log(event);
 
   // 1. Grab postData from event
   try {
