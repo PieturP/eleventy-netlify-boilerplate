@@ -9,9 +9,8 @@ eleventyNavigation:
 ---
 
 {%- for component in homepageItems.items %}
-{# <pre>{{ component | dump }}</pre><hr> #}
-{% set item = component.item %}
-{%- include 'components/homepage-section-' + component.collection + '.njk' %}
+  {% set item = component.item %}
+  {%- include 'components/homepage-section-' + component.collection + '.njk' %}
 {%- endfor %}
 
 {# {%- for collection in bookcollections %} #}

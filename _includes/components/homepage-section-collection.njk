@@ -1,15 +1,20 @@
 <section class="full-width">
+{% if item.header %}
+  <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
+{% endif %}
 <h2>{{ item.title }}</h2>
 <h3>{{ item.subtitle }}</h3>
+
+
 <div class="rte">{{item.description | safe}}</div>
 
 
-{% set itemsBooks = bookcollections | findBy('id', item.id) %}
+{% set collection = bookcollections | findBy('id', item.id) %}
 
  {% set count = 0 %}
   {% set readMore = false %}
   <ol class="booklist booklist--small">
-  {%- for bookItem in itemsBooks.books %}
+  {%- for bookItem in collection.books %}
       {% set book = bookItem.book_id %}
       {%- if book %}  {# book may be empty, when stock < 1 #}
         {% set count = count + 1 %}

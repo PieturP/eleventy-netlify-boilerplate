@@ -1,0 +1,18 @@
+---
+eleventyComputed:
+  title: "{{ book.title | safe }}"
+metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.desciption will be used instead.
+date: 2017-01-01T00:00:00.000Z
+pagination:
+  data: preRenderedBooks
+  alias: book
+  size: 1
+
+permalink: books/{{ book.id }}/
+
+eleventyNavigation:
+  key: Books
+  order: 4
+
+---
+{% include 'components/book.njk' %}
