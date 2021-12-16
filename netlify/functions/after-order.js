@@ -10,7 +10,7 @@ async function verifyRequestToken(token) {
       accept: 'application/json'
     },
     auth: {
-      username :`${(process.env.SNIPCART_API_TOKEN)}`,
+      username :`${(process.env.SNIPCART_API_KEY)}`,
       password : ''
     }
   });
