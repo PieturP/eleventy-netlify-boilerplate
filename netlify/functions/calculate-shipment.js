@@ -222,15 +222,16 @@ exports.handler = async function (event) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        errors: [
-          // {
-            // "key": "invalid_postal_code",
-            // "message": "The postal code is invalid."
-          // },
+        "rates": [{"cost": 0, "description": "Error calculating shipping costs"}],
+        "errors": [
           {
-            "key": 'invalid_postal_code',
-            "message": 'Error calculating shipment costs. ' + e.message
-          }
+            "key": "invalid_postal_code",
+            "message": "The postal code is invalid."
+          },
+          // {
+          //   "key": 'invalid_postal_code',
+          //   "message": 'Error calculating shipment costs. ' + e.message
+          // }
         ]
       }),
     };
