@@ -153,7 +153,7 @@ async function fetchBook(book) {
     return resp.data.data;
   } catch (e) {
     console.log(e);
-    throw new Error(`Item "${book.name}" not found or out of stock`);
+    throw new Error(`Item "${book?.name}" not found or out of stock`);
   }
 }
 
@@ -176,7 +176,7 @@ exports.handler = async function (event) {
     let extraHeavyCount = 0;
 
     if (postData.items) {
-      for(const item  of postData.items) {
+      for(const item of postData.items) {
         const book = await fetchBook(item);
         heavyCount += (book.weight === WEIGHT_HEAVY) ? 1 : 0;
         extraHeavyCount += (book.weight === WEIGHT_EXTRA_HEAVY) ? 1 : 0;
@@ -217,7 +217,7 @@ exports.handler = async function (event) {
   } catch (e) {
     console.log(e);
     return {
-      statusCode: 400,
+      statusCode: 200, // Shouldn't but the Snipcart API demands it...
       headers: {
         'Content-Type': 'application/json'
       },

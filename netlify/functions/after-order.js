@@ -3,8 +3,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 async function verifyRequestToken(token) {
-  console.log({token});
-
   const resp = await axios.get(`https://app.snipcart.com/api/requestvalidation/${token}`, {
     headers: {
       accept: 'application/json'
@@ -15,44 +13,63 @@ async function verifyRequestToken(token) {
     }
   });
 
-  console.log({resp});
-
+  if (resp?.statusText !== 'OK') {
+    console.log(resp);
+    throw new Error('Error verifying requestToken');
+  }
 }
 
-async function updateBook(book) {
-  // const options = {
-  //   headers: {
-  //     'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
-  //   }
-  // }
-  // try {
-  //   const resp = await axios.get(
-  //     `${process.env.DIRECTUS_API_HOST}/items/booksdata/${book.id}`
-  //     + `?filter[stock][_gte]=1`
-  //     + `&fields=id,price,weight,title`
-  //   , options);
-  //   return resp.data.data;
-  // } catch (e) {
-  //   console.log(e);
-  //   throw new Error(`Item "${book.name}" not found or out of stock`);
-  // }
+async function updateBookStock(bookId, quantity) {
+  const options = {
+    headers: {
+      'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
+    }
+  }
+  try {
+    const currentBook = await axios.get(
+      `${process.env.DIRECTUS_API_HOST}/items/booksdata/${bookId}`
+      + `?fields=stock`, options);
+
+    const newData = {
+      stock: (parseInt(currentBook.data.data.stock, 10) - parseInt(quantity, 10))
+    };
+    console.log({currentStock: currentBook.data.data.stock, newData, quantity})
+
+    const resp = await axios.patch(
+      `${process.env.DIRECTUS_API_HOST}/items/booksdata/${bookId}`, newData
+    , options);
+
+    if (resp.statusText !== 'OK') {
+      throw new Error('Error updating book stock');
+    }
+  } catch (e) {
+    console.log(e);
+    throw new Error(`Item ${bookId} not found`);
+  }
 }
 
 
 exports.handler = async function (event) {
-
-  await verifyRequestToken(event.headers['x-snipcart-requesttoken']);
-
-  console.log('After Order Hook');
-
-
   // console.log(event);
 
   // 1. Grab postData from event
   try {
-    const postData = JSON.parse(event.body).content;
+    console.log('After Order Hook');
 
-    console.log(postData);
+    // await verifyRequestToken(event.headers['x-snipcart-requesttoken']);
+
+    const postData = JSON.parse(event.body);
+
+    for (const item of postData.items) {
+
+      console.log('>>>');
+      console.info(item);
+      console.log('<<<');
+
+      if(item.type !== 'New') {
+        updateBookStock(item.id, item.quantity);
+      }
+    }
 
     const response = {
       'result': 'success',
@@ -69,12 +86,12 @@ exports.handler = async function (event) {
   } catch (e) {
     console.log(e);
     return {
-      statusCode: 400,
+      statusCode: 200, // Shouldn't but the Snipcart API demands it
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        message: 'Error calculating shipment costs. ' + e.message,
+        message: 'Error processing order. ' + e.message,
       }),
     };
   }

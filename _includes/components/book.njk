@@ -48,9 +48,15 @@
       data-item-min-quantity="1"
       data-item-max-quantity="1"
 
+      {#
       data-item-custom1-name="WeightCategory"
       data-item-custom1-type="hidden"
       data-item-custom1-value="{{ book.weight }}"
+      #}
+
+      data-item-custom1-name="BookType"
+      data-item-custom1-type="hidden"
+      data-item-custom1-value="{{ book.type }}"
 
       {%- if book.images|length %}
         data-item-image="{{ env.IMAGE_HOST }}/{{ book.images[0].image_id.file }}"

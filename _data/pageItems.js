@@ -11,9 +11,6 @@ module.exports = async () => {
     +`?fields=name,items.item:collection.*,items.item:snippets.name,items.item:snippets.content,items.collection,items.item:images`
   , options);
 
-  console.dir(resp.data);
-
   return resp.data
-
 
 };
