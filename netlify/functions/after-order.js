@@ -4,7 +4,16 @@ dotenv.config();
 
 async function verifyRequestToken(token) {
   console.log({token});
-  const resp = await axios.get(`https://app.snipcart.com/api/requestvalidation/${token}`);
+
+  const resp = await axios.get(`https://app.snipcart.com/api/requestvalidation/${token}`, {
+    headers: {
+      accept: 'application/json'
+    },
+    auth: {
+      username :`${(process.env.SNIPCART_API_TOKEN)}`,
+      password : ''
+    }
+  });
 
   console.log({resp});
 
