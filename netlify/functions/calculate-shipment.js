@@ -223,7 +223,7 @@ exports.handler = async function (event) {
       },
       body: JSON.stringify({
         errors: [
-         { key: 'error', message: 'Error calculating shipment costs. ' + e.message}
+         { key: 'shipping-rates', message: 'Error calculating shipment costs. ' + e.message}
         ]
       }),
     };
