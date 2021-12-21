@@ -222,7 +222,7 @@ exports.handler = async function (event) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "rates": [{"cost": 0, "description": "Error calculating shipping costs"}],
+        // "rates": [{"cost": 0, "description": "Error calculating shipping costs"}],
         "errors": [
           // {
           //   "key": "invalid_postal_code",
