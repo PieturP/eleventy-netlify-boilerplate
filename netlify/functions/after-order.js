@@ -55,14 +55,7 @@ async function insertOrder(rawData) {
     }
   }
   const resp = await axios.post(
-    `${process.env.DIRECTUS_API_HOST}/items/orders_new`, {
-      data: JSON.stringify({ "raw_data": rawData })
-    }
-  , options);
-  const resp2 = await axios.post(
-    `${process.env.DIRECTUS_API_HOST}/items/orders_new`, {
-      data: { "raw_data" : JSON.stringify(rawData) }
-    }
+    `${process.env.DIRECTUS_API_HOST}/items/orders_new`, JSON.stringify({ "raw_data": rawData })
   , options);
   console.log('Inserting Order data');
   console.log({resp, resp2});
