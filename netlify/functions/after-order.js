@@ -51,14 +51,14 @@ async function updateBookStock(bookId, quantity) {
 async function insertOrder(rawData) {
   const options = {
     headers: {
-      'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
+      'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`,
+      'Content-Type': 'application/json'
     }
   }
   const resp = await axios.post(
     `${process.env.DIRECTUS_API_HOST}/items/orders_new`, JSON.stringify({ "raw_data": rawData })
   , options);
   console.log('Inserting Order data');
-  console.log({resp, resp2});
 }
 
 
@@ -72,7 +72,7 @@ exports.handler = async function (event) {
     // await verifyRequestToken(event.headers['x-snipcart-requesttoken']);
 
     const postData = JSON.parse(event.body);
-    console.log(postData);
+    // console.log(postData);
 
     await insertOrder(postData);
 
