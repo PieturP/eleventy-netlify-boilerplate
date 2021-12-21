@@ -55,7 +55,7 @@ async function insertOrder(rawData) {
     }
   }
   const resp = await axios.post(
-    `${process.env.DIRECTUS_API_HOST}/items/booksdata/${bookId}`, {
+    `${process.env.DIRECTUS_API_HOST}/items/orders_new`, {
       raw_data: rawData
     }
   , options);
