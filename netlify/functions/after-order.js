@@ -76,7 +76,7 @@ exports.handler = async function (event) {
 
     await insertOrder(postData);
 
-    for (const item of postData.items) {
+    for (const item of postData.content.items) {
 
       console.log('>>>');
       console.info(item);
