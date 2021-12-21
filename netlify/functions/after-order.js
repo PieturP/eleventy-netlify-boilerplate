@@ -48,6 +48,21 @@ async function updateBookStock(bookId, quantity) {
   }
 }
 
+async function insertOrder(rawData) {
+  const options = {
+    headers: {
+      'Authorization': `Bearer ${process.env.DIRECTUS_API_TOKEN}`
+    }
+  }
+  const resp = await axios.post(
+    `${process.env.DIRECTUS_API_HOST}/items/booksdata/${bookId}`, {
+      raw_data: rawData
+    }
+  , options);
+  console.log('Inserting Order data');
+  console.log({resp});
+}
+
 
 exports.handler = async function (event) {
   // console.log(event);
@@ -60,6 +75,8 @@ exports.handler = async function (event) {
 
     const postData = JSON.parse(event.body);
 
+    await insertOrder(postData);
+
     for (const item of postData.items) {
 
       console.log('>>>');
@@ -67,7 +84,7 @@ exports.handler = async function (event) {
       console.log('<<<');
 
       if(item.type !== 'New') {
-        updateBookStock(item.id, item.quantity);
+        await updateBookStock(item.id, item.quantity);
       }
     }
 
