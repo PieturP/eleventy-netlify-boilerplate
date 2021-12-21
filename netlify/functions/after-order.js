@@ -79,6 +79,7 @@ exports.handler = async function (event) {
     // await verifyRequestToken(event.headers['x-snipcart-requesttoken']);
 
     const postData = JSON.parse(event.body);
+    console.log(postData);
 
     await insertOrder(postData);
 
