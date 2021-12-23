@@ -1,4 +1,4 @@
-<section class="full-width">
+<section class="full-width section-collection section-collection--{{ item.title|slugify }}">
 {% if item.header %}
   <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
 {% endif %}

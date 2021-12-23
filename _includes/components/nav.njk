@@ -1,4 +1,4 @@
-<nav>
+<nav class="main-nav">
   {#
     @FIXME
 
@@ -8,21 +8,34 @@
 
     As an alternative, we use metadata.navPages instead.
   #}
-  <ul>
-  {%- for entry in metadata.navPages %}
-    <li>
-      <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
-    </li>
-  {%- endfor %}
-  <li>
-    <button class="snipcart-checkout button--hidden"><span class="snipcart-items-count"></span> <span class="snipcart-items-count-label">Item(s)</button>
-  </li>
-  <li>
-    <form method="GET" action="/search-results/" class="inline-search">
-      <input type="search" name="search" placeholder="Author, Title, ISBN" value="">
-      <input type="hidden" name="hp" value="">
-      <input type="submit" value="Search">
-    </form>
-  </li>
-  </ul>
+  <a href="{{ '/' | url }}" class="logo">
+    <h1>
+      Scrinium
+      <i>Classical Antiquity</i>
+    </h1>
+  </a>
+  <div class="primary-nav">
+    <ul>
+    {%- for entry in metadata.navPages %}
+      <li>
+        <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
+      </li>
+    {%- endfor %}
+    </ul>
+  </div>
+  <div class="secondary-nav">
+    <ul>
+      <li>
+        <a href="#" class="snipcart-checkout button--hidden"><i class="fa fa-shopping-cart"></i> Basket <span class="snipcart-items-counter"></span></a>
+      </li>
+      <li>
+        <form method="GET" action="/search-results/" class="inline-search">
+          <i class="fa fa-search"></i>
+          <input type="search" name="search" placeholder="Author, Title, ISBN" value="">
+          <input type="hidden" name="hp" value="">
+          <input type="submit" value="Search">
+        </form>
+      </li>
+    </ul>
+  </div>
 </nav>
