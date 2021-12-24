@@ -56,6 +56,9 @@ async function insertOrder(rawData) {
     }
   }
 
+  console.log(rawData);
+  console.log(rawData.shippingAddress);
+
   const data = {
     "raw_data": rawData,
     "shippingaddress_fullname": rawData.shippingAddress.fullname,
