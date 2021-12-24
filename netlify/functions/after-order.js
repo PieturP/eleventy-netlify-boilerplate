@@ -55,8 +55,19 @@ async function insertOrder(rawData) {
       'Content-Type': 'application/json'
     }
   }
+
+  const data = {
+    "raw_data": rawData,
+    "shippingaddress_fullname": rawData.shippingaddress.fullname,
+    "shippingaddress_fulladdress": rawData.shippingaddress.fulladdress,
+    "shippingaddress_postalcode": rawData.shippingaddress.postalcode,
+    "shippingaddress_city": rawData.shippingaddress.city,
+    "shippingaddress_province": rawData.shippingaddress.province,
+    "shippingaddress_country": rawData.shippingaddress.country,
+  }
+
   const resp = await axios.post(
-    `${process.env.DIRECTUS_API_HOST}/items/orders_new`, JSON.stringify({ "raw_data": rawData })
+    `${process.env.DIRECTUS_API_HOST}/items/orders_new`, JSON.stringify(data)
   , options);
   console.log('Inserting Order data');
 }
@@ -68,19 +79,17 @@ exports.handler = async function (event) {
   // 1. Grab postData from event
   try {
     console.log('After Order Hook');
-
     // await verifyRequestToken(event.headers['x-snipcart-requesttoken']);
 
     const postData = JSON.parse(event.body);
     // console.log(postData);
-
     await insertOrder(postData);
 
     for (const item of postData.content.items) {
 
-      console.log('>>>');
-      console.info(item);
-      console.log('<<<');
+      // console.log('>>>');
+      // console.info(item);
+      // console.log('<<<');
 
       if(item.type !== 'New') {
         await updateBookStock(item.id, item.quantity);
@@ -100,6 +109,7 @@ exports.handler = async function (event) {
     }
 
   } catch (e) {
+    console.log('ERROR');
     console.log(e);
     return {
       statusCode: 200, // Shouldn't but the Snipcart API demands it
