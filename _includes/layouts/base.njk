@@ -20,7 +20,7 @@
 			document.addEventListener('snipcart.ready', () => {
 				Snipcart.store.subscribe(() => {
 					var count = Snipcart.store.getState().cart.items.count;
-					document.querySelector('.snipcart-items-counter').innerText = count ? count : null;
+					document.querySelector('.snipcart-items-counter').textContent = count ? count : null;
 				});
 			});
 		</script>
