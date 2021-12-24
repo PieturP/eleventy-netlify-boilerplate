@@ -67,7 +67,7 @@ async function insertOrder(rawData) {
     "raw_data": rawData,
     "shippingaddress_fullname": content.shippingAddress.fullName.trim(),
     "shippingaddress_fulladdress": content.shippingAddress.fullAddress.trim(),
-    "shippingaddress_postalcode": content.shippingAddress.postalcode.trim(),
+    "shippingaddress_postalcode": content.shippingAddress.postalCode.trim(),
     "shippingaddress_city": content.shippingAddress.city.trim(),
     "shippingaddress_province": content.shippingAddress.province.trim(),
     "shippingaddress_country": content.shippingAddress.country.trim(),
