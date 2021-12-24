@@ -65,12 +65,13 @@ async function insertOrder(rawData) {
 
   const data = {
     "raw_data": rawData,
-    "shippingaddress_fullname": content.shippingAddress.fullname,
-    "shippingaddress_fulladdress": content.shippingAddress.fulladdress,
-    "shippingaddress_postalcode": content.shippingAddress.postalcode,
-    "shippingaddress_city": content.shippingAddress.city,
-    "shippingaddress_province": content.shippingAddress.province,
-    "shippingaddress_country": content.shippingAddress.country,
+    "shippingaddress_fullname": content.shippingAddress.fullName.trim(),
+    "shippingaddress_fulladdress": content.shippingAddress.fullAddress.trim(),
+    "shippingaddress_postalcode": content.shippingAddress.postalcode.trim(),
+    "shippingaddress_city": content.shippingAddress.city.trim(),
+    "shippingaddress_province": content.shippingAddress.province.trim(),
+    "shippingaddress_country": content.shippingAddress.country.trim(),
+    "email": content.email.trim(),
   }
 
   const resp = await axios.post(
