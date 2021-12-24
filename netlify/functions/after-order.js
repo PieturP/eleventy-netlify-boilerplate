@@ -56,17 +56,21 @@ async function insertOrder(rawData) {
     }
   }
 
+  console.log('RAW DATA:');
   console.log(rawData);
-  console.log(rawData.shippingAddress);
+  const content = rawData.content;
+
+  console.log('CONTENT:');
+  console.log(content);
 
   const data = {
     "raw_data": rawData,
-    "shippingaddress_fullname": rawData.shippingAddress.fullname,
-    "shippingaddress_fulladdress": rawData.shippingAddress.fulladdress,
-    "shippingaddress_postalcode": rawData.shippingAddress.postalcode,
-    "shippingaddress_city": rawData.shippingAddress.city,
-    "shippingaddress_province": rawData.shippingAddress.province,
-    "shippingaddress_country": rawData.shippingAddress.country,
+    "shippingaddress_fullname": content.shippingAddress.fullname,
+    "shippingaddress_fulladdress": content.shippingAddress.fulladdress,
+    "shippingaddress_postalcode": content.shippingAddress.postalcode,
+    "shippingaddress_city": content.shippingAddress.city,
+    "shippingaddress_province": content.shippingAddress.province,
+    "shippingaddress_country": content.shippingAddress.country,
   }
 
   const resp = await axios.post(
