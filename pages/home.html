@@ -11,7 +11,11 @@ eleventyNavigation:
 {%- for component in page.items %}
   {% set item = component.item %}
   {% if item %}
-    {%- include 'components/homepage-section-' + component.collection + '.njk' %}
+    {% if component.collection === 'partials' %}
+      {%- include 'components/' + item.name + '.njk' %}
+    {% else %}
+      {%- include 'components/homepage-section-' + component.collection + '.njk' %}
+    {% endif %}
   {% endif %}
 {%- endfor %}
 

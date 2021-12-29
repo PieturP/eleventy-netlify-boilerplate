@@ -8,7 +8,7 @@ module.exports = async () => {
 
   const resp = await Cache(
     `${process.env.DIRECTUS_API_HOST}/items/pages`
-    +`?fields=name,items.item:collection.*,items.item:snippets.name,items.item:snippets.content,items.collection,items.item:images`
+    +`?fields=name,items.item:collection.*,items.item:snippets.name,items.item:snippets.content,items.collection,items.item:images.items.item:partial.name`
   , options);
 
   return resp.data

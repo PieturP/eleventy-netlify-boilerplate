@@ -14,6 +14,9 @@
       <i>Classical Antiquity</i>
     </h1>
   </a>
+  <input type="checkbox" id="menu-input" hidden />
+  <label for="menu-input" class="menu-button hide-on-small"><i class="fa fa-bars"><span class="visually-hidden">Open Menu</span></i><i class="fa fa-times"><span class="visually-hidden">Close Menu</span></i></label>
+  <div class="menu-button menu-button--shoppingcart hide-on-small"><a href="javascript:void()" class="snipcart-checkout"><i class="fa fa-shopping-cart"><span class="visually-hidden">View Shopping Cart</span></i></a></div>
   <div class="primary-nav">
     <ul>
     {%- for entry in metadata.navPages %}
@@ -21,16 +24,26 @@
         <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current item"{% endif %}>{{ entry.title }}</a>
       </li>
     {%- endfor %}
+    <li class="hide-on-small">
+      <form method="GET" action="/search-results/" class="inline-search">
+        <i class="fa fa-search"></i>
+        <label for="search">Search our books on Author, Title or ISBN"></label>
+        <input type="search" name="search" placeholder="Author, Title, ISBN" value="">
+        <input type="hidden" name="hp" value="">
+        <input type="submit" value="Search">
+      </form>
+    </li>
     </ul>
   </div>
   <div class="secondary-nav">
     <ul>
       <li>
-        <a href="#" class="snipcart-checkout button--hidden"><i class="fa fa-shopping-cart"></i> Basket <span class="snipcart-items-counter"></span></a>
+        <a href="javascript:void()" class="snipcart-checkout button--hidden"><i class="fa fa-shopping-cart"></i> Basket <span class="snipcart-items-counter"></span></a>
       </li>
       <li>
         <form method="GET" action="/search-results/" class="inline-search">
           <i class="fa fa-search"></i>
+          <label for="search">Search our books on Author, Title or ISBN"></label>
           <input type="search" name="search" placeholder="Author, Title, ISBN" value="">
           <input type="hidden" name="hp" value="">
           <input type="submit" value="Search">
