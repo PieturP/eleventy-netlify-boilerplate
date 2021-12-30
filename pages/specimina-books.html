@@ -1,6 +1,6 @@
 ---
 eleventyComputed:
-  title: Specimina Edition {{ specimina.tagName }}
+  title: Specimina Edition {{ specimina.tagName }} | {{ metadata.title }}
 eleventyExcludeFromCollections: true
 pagination:
   data: booksPerSpecimina
@@ -8,9 +8,18 @@ pagination:
   alias: specimina
 permalink: specimina/{{ specimina.tagName }}/{% if specimina.pageNumber %}{{ specimina.pageNumber + 1 }}/{% endif %}
 ---
-{% for book in specimina.pageData %}
-  {% include 'components/book.njk' %}
-{% endfor %}
+<section class="full-width">
+  <h2>Specimina {{ specimina.tagName }}</h2>
+  <ol class="booklist booklist--small">
+  {% for book in specimina.pageData %}
+    <li>
+      {% include 'components/book-small.njk' %}
+    </li>
+  {% endfor %}
+  </ol>
+</section>
 
-{% include 'components/pagination-nav-specimina.njk' %}
-<a href="/mailinglist/">Back to Specimina overview</a>
+<div>
+  {% include 'components/pagination-nav-specimina.njk' %}
+  <a href="/mailinglist/">Back to Specimina overview</a>
+</div>

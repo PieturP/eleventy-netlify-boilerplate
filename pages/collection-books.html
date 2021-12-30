@@ -8,15 +8,20 @@ pagination:
 permalink: collections/{{ collection.tagName }}/{% if collection.pageNumber %}{{ collection.pageNumber + 1 }}/{% endif %}
 ---
 
+<section>
+<h2>{{ collection.title }}</h2>
 <h3>{{ collection.subtitle }}</h3>
 <div class="rte">{{ collection.description | safe }}</div>
-<hr>
 
-{% set link = true %}
-{% for book in collection.pageData %}
-  {% set book = book.book_id %}
-  {% include 'components/book.njk' %}
-  {# {{ book | dump }} #}
-{% endfor %}
+<ol class="booklist--small">
+  {% set link = true %}
+  {% for book in collection.pageData %}
+    {% set book = book.book_id %}
+    {% include 'components/book-small.njk' %}
+    {# {{ book | dump }} #}
+  {% endfor %}
+</ol>
 
 {% include 'components/pagination-nav-collections.njk' %}
+
+</section>

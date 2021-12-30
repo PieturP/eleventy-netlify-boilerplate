@@ -14,35 +14,47 @@ eleventyComputed:
 
 
 ---
+
+
 {% if fetchedBooks %}
 
-  <div class="results">
-    {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found.
-  </div>
+  <section class="full-width">
+    <h2>
+      {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found:
+    </h2>
+    <ol class="booklist booklist--small">
+    {% for book in fetchedBooks.data %}
+      {# <a href="/books/{{ book.id }}"> #}
+      {% set link = true %}
+      {% include 'components/book-small.njk' %}
+      {# </a> #}
+    {% endfor %}
+    </ol>
+  </section>
 
-  {% for book in fetchedBooks.data %}
-    {# <a href="/books/{{ book.id }}"> #}
-    {% set link = true %}
-    {% include 'components/book.njk' %}
-    {# </a> #}
-  {% endfor %}
   {% if fetchedBooks.nav %}
-    <div class="pagination">
-      {% if fetchedBooks.nav.previous %}
-        <a href="{{ fetchedBooks.nav.previous }}">Previous page</a>
-      {% endif %}
-      {% if fetchedBooks.nav.next %}
-        <a href="{{ fetchedBooks.nav.next }}">Next page</a>
-      {% endif %}
+    <div>
+      <nav class="pagination" aria-labelledby="pager">
+        <h3 id="pager">{{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found</h3>
+        <ol>
+        {% if fetchedBooks.nav.previous %}
+          <li><a href="{{ fetchedBooks.nav.previous }}">Previous page</a></li>
+        {% endif %}
+        {% if fetchedBooks.nav.next %}
+          <li><a href="{{ fetchedBooks.nav.next }}">Next page</a></li>
+        {% endif %}
+        </ol>
+      </nav>
     </div>
   {% endif %}
 {% else %}
+  <section>
   {# <h1>No search results found</h1> #}
-
-  <form method="GET" action="/search-results/">
-    <input type="author" name="author" placeholder="Author" value="" autofocus="autofocus">
-    <input type="title" name="title" placeholder="Title" value="">
-    <input type="isbn" name="isbn" placeholder="ISBN" value="">
-    <input type="submit" value="Search">
-  </form>
+    <form method="GET" action="/search-results/">
+      <input type="author" name="author" placeholder="Author" value="" autofocus="autofocus">
+      <input type="title" name="title" placeholder="Title" value="">
+      <input type="isbn" name="isbn" placeholder="ISBN" value="">
+      <input type="submit" value="Search">
+    </form>
+  </section>
 {% endif %}

@@ -1,0 +1,28 @@
+---
+layout: layouts/page.njk
+eleventyComputed:
+  title: "{{ thePage.title + ' | ' + metadata.title if thePage.title else metadata.title }}"
+date: 2016-01-01T00:00:00.000Z
+
+pagination:
+  data: pageItems
+  size: 1
+  alias: thePage # -- page is a reserved word, hence we use 'thePage' instead
+
+permalink: "{{ thePage.slug + '/index.html' if thePage.slug else 'index.html' }}"
+
+eleventyNavigation:
+  key: "{{thePage.name }}"
+  order: 0
+---
+{# {% set page = pageItems | findBy('name', 'Homepage') %} #}
+{%- for component in thePage.items %}
+  {% set item = component.item %}
+  {% if item %}
+    {% if component.collection === 'partials' %}
+      {%- include 'components/' + item.name + '.njk' %}
+    {% else %}
+      {%- include 'components/homepage-section-' + component.collection + '.njk' %}
+    {% endif %}
+  {% endif %}
+{%- endfor %}

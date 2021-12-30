@@ -9,11 +9,11 @@
 <pre>pageNumber:{{ specimina.pageNumber }}</pre> #}
 
 
-<nav aria-labelledby="pager">
-  <h2 id="pager">Page {{ (current) }} of {{ filtered.pages | length }}</h2>
+<nav class="pagination" aria-labelledby="pager">
+  <h3 id="pager">Page {{ (current) }} of <a href="{{filtered.href.last}}">{{ filtered.pages | length }}</a></h3>
   <ol>
     {# <li>{% if page.url != filtered.href.first %}<a href="{{ filtered.href.first }}">First</a>{% else %}First{% endif %}</li> #}
-    <li>{% if filtered.href.previous and current != 1 %}<a href="{{ filtered.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
+    <li>{% if filtered.href.previous and current != 1 %}<a  href="{{ filtered.href.previous }}">Previous</a>{% else %}Previous{% endif %}</li>
 {# {%- for pageEntry in filtered.pages %} #}
     {# <li><a href="{{ filtered.hrefs[ loop.index0 ] }}"{% if page.url == filtered.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>Page {{ loop.index }}</a></li> #}
 {# {%- endfor %} #}

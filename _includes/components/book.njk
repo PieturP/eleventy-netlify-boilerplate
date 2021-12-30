@@ -32,13 +32,9 @@
     {%- if link %}
       </a>
     {%- endif %}
-    {% for keyword in book.keywords %}
-      {% if keyword.keyword_id.visible %}
-        <div class="book__keyword"><a href="/search-results/?keyword={{ keyword.keyword_id.id }}">{{ keyword.keyword_id.name }}</a></div>
-      {% endif %}
-    {% endfor %}
 
-    <button class="snipcart-add-item"
+    <br />
+    <button class="button snipcart-add-item"
       data-item-id="{{ book.id }}"
       data-item-price="{{ book.price }}"
       data-item-url="/books/{{ book.id }}"
@@ -68,10 +64,20 @@
       data-item-name="{{ book.author }} {{ book.title }} ">
       <span class="fa fa-cart-arrow-down"></span> Add to cart
     </button>
+
     {# <img src="book."> #}
     {# <pre>{{ book | dump }}</pre> #}
-  </div>
 
+    <div class="book__keywords">
+        <h3>See also:</h3>
+      {% for keyword in book.keywords %}
+        {% if keyword.keyword_id.visible %}
+          <div class="book__keyword"><a href="/search-results/?keyword={{ keyword.keyword_id.id }}#{{keyword.keyword_id.name | slugify}}">{{ keyword.keyword_id.name }}</a></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
 
 
 
