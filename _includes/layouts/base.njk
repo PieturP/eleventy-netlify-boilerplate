@@ -16,14 +16,7 @@
 		{% include "components/footer.njk" %}
 		<script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
 		<div hidden id="snipcart" data-api-key="{{ metadata.SNIPCART_API_KEY }}"></div>
-		<script>
-			document.addEventListener('snipcart.ready', () => {
-				Snipcart.store.subscribe(() => {
-					var count = Snipcart.store.getState().cart.items.count;
-					document.querySelector('.snipcart-items-counter').textContent = count ? count : null;
-				});
-			});
-		</script>
+		{% include "components/scripts.njk" %}
 	</body>
 
 </html>
