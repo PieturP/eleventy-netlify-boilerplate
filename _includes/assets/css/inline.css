@@ -11,9 +11,9 @@
     --thumbnail-width: 120px;
     --thumbnail-height: 180px;
     --menu-width: 1220px;
-    --body-font: 'Open Sans', sans-serif;
-    --heading-font: 'Port Lligat Sans', sans-serif;
-    --alt-font: 'Port Lligat Slab', serif;
+    --body-font: 'Open Sans', Helvetica, sans-serif;
+    --heading-font: 'Port Lligat Sans', Verdana, sans-serif;
+    --alt-font: 'Port Lligat Slab', Verdana, sans-serif;
     --blue: #43729c;
     --green: #b4c864;
     --light-grey: #ececef;
@@ -186,7 +186,6 @@ button,
     cursor: pointer;
 }
 
-button:hover,
 .button:hover {
     background-color: var(--light-green);
     border-color: var(--light-green);
@@ -287,6 +286,10 @@ main>* {
     margin: 0 0 .5em;
     font-size: 2.4rem;
     color: var(--ultra-dark-green);
+}
+
+.search-box .button:hover {
+    background-color: var(--ultra-dark-green);
 }
 
 
@@ -480,7 +483,7 @@ form label {
     display: block;
 }
 
-@media screen and (max-width: 90rem) {
+@media screen and (min-width: 900px) {
     .hide-on-medium {
         display: none;
     }
@@ -819,6 +822,7 @@ article.book {
     }
     .main-nav .menu-button {
         display: flex;
+        flex-flow: row-reverse;
         justify-content: center;
         align-items: center;
         cursor: pointer;
@@ -834,13 +838,13 @@ article.book {
     }
     .menu-button.menu-button--shoppingcart {
         left: unset;
-        right: 1rem;
-    }
-    .menu-button .menu-button--shoppingcart .snipcart-items-counter {
-        display: none;
+        right: 2rem;
     }
     .snipcart-items-counter:empty+.snipcart-checkout {
-        display: none !important;
+        display: none;
+    }
+    .menu-button.menu-button--shoppingcart .snipcart-items-counter {
+        margin-left: .5em;
     }
     .main-nav .menu-button i:nth-child(2) {
         display: none;
