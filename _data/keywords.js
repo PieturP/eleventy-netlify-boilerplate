@@ -2,13 +2,12 @@ const dotenv = require('dotenv');
 const Cache = require("@11ty/eleventy-cache-assets");
 const options = require('./fetchOptions');
 
-module.exports = async () => {
+module.exports = async() => {
 
-  dotenv.config();
+    dotenv.config();
 
-  const resp = await Cache(
-    `${process.env.DIRECTUS_API_HOST}/items/keywords?fields=id,name&sort=name&limit=500&filter[visible]=true`
-  , options);
+    const resp = await Cache(
+        `${process.env.DIRECTUS_API_HOST}/items/keywords?fields=id,name&sort=name&limit=500&filter[visible]=true`, options);
 
-  return resp.data
+    return resp.data
 };

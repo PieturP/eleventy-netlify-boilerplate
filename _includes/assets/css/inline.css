@@ -144,6 +144,10 @@ button {
     font-family: var(--body-font);
 }
 
+button {
+    width: auto;
+}
+
 input[type="submit"] {
     color: inherit;
 }
@@ -201,8 +205,13 @@ a[href]:not(:hover) {
     text-decoration: none;
 }
 
-a[href]:hover {
+a[href]:hover,
+a[href]:focus {
     color: var(--secondary);
+}
+
+a[href]:focus {
+    outline: 1px currntColor dotted;
 }
 
 img {
@@ -229,7 +238,7 @@ main>* {
     padding: 0 1rem;
 }
 
-.search-box {
+.aside {
     display: none;
 }
 
@@ -243,12 +252,12 @@ main>* {
         grid-column: 2 / 4;
         padding: 0 1rem;
     }
-    .search-box {
+    .aside {
         display: block;
         grid-column: 2 / 3;
         margin-top: 1.5em;
     }
-    .search-box+section {
+    .aside+section {
         grid-column: 3 / 4;
     }
 }
@@ -331,22 +340,38 @@ nav.pagination li:first-of-type {
 
 /***/
 
-.search-box {
+.aside {
     align-self: start;
     margin-right: 3rem;
     padding: 2rem 2rem;
     background: var(--light-green);
 }
 
-.search-box h3 {
+.aside h3 {
     margin: 0 0 .5em;
     font-size: 2.4rem;
     color: var(--ultra-dark-green);
 }
 
-.search-box .button:hover {
+.aside .button:hover {
     background-color: var(--ultra-dark-green);
     color: var(--white);
+}
+
+.mailinglist-previous {
+    margin: 1em;
+    padding: 0;
+    list-style: disc;
+}
+
+.mailinglist-previous>li::marker {
+    color: var(--white);
+}
+
+.mailinglist-previous a[href],
+.mailinglist-previous a[href]:visited {
+    color: var(--ink-lighter);
+    /* font-weight: 700; */
 }
 
 
@@ -535,6 +560,20 @@ form label {
     white-space: nowrap;
     width: 1px;
 }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+/* REFACTOR THESE CLASSNAMES */
 
 .hide-on-medium {
     display: block;

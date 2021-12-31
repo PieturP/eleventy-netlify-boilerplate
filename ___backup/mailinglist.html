@@ -5,11 +5,3 @@ permalink: "mailinglist/index.html"
 ---
 
 {% include 'components/mailinglist-subscribe.njk' %}
-
-<h2>Prior editions</h2>
-<p>Have a look at our earlier sent Specimina:</p>
-<ol>
-{% for item in specimina %}
-  <li><a href="/specimina/{{ item }}/">Edition {{item}}</a></li>
-{% endfor %}
-</ol>

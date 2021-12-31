@@ -1,0 +1,10 @@
+<aside class="aside aside--mailinglist">
+
+  <h3>Latest editions</h3>
+  <ol class="mailinglist-previous">
+  {% for item in specimina %}
+    <li><a href="/specimina/{{ item }}/">Edition {{item}}</a></li>
+  {% endfor %}
+  </ol>
+
+</aside>
