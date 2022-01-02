@@ -364,6 +364,10 @@ nav.pagination li:first-of-type {
     list-style: disc;
 }
 
+.mailinglist-previous>li {
+    margin-bottom: .25em;
+}
+
 .mailinglist-previous>li::marker {
     color: var(--white);
 }
@@ -371,7 +375,12 @@ nav.pagination li:first-of-type {
 .mailinglist-previous a[href],
 .mailinglist-previous a[href]:visited {
     color: var(--ink-lighter);
+    text-decoration: underline;
     /* font-weight: 700; */
+}
+
+.mailinglist-previous a[href]:hover {
+    text-decoration: none;
 }
 
 
@@ -1005,7 +1014,7 @@ article.book {
         display: flex;
         flex-flow: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         padding: 1em;
         min-height: 70vh;
     }
