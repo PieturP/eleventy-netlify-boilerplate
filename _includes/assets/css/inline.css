@@ -1015,6 +1015,59 @@ article.book {
 }
 
 
+/******** MAILINGLIST *******/
+
+.mailinglist-subscribe h1 {
+    color: var(--ink-lighter);
+}
+
+.mailinglist-subscribe h2 {
+    font-size: 2.9rem;
+    color: var(--ultra-dark-green);
+    margin-bottom: 3rem;
+}
+
+.mailinglist-subscribe p:last-of-type {
+    margin-bottom: 3rem;
+}
+
+.mailinglist-subscribe form {
+    display: flex;
+    flex-flow: row;
+    background: var(--light-green);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+ma .mailinglist-subscribe [type="email"] {
+    align-self: stretch;
+    margin: 0;
+}
+
+.mailinglist-subscribe .button {
+    margin-top: 0px;
+    margin-left: 1rem;
+    /* height: 100%; */
+    /* align-self: stretch; */
+    height: auto;
+}
+
+.mailinglist-subscribe .button:hover {
+    background: var(--ultra-dark-green);
+}
+
+@media (max-width: 768px) {
+    .aside--mailinglist {
+        display: block;
+        grid-column: 1/5;
+        margin-top: 3rem;
+        margin-right: 0;
+        order: 2;
+        padding: 3rem;
+    }
+}
+
+
 /************** FOOTER *************/
 
 footer {
