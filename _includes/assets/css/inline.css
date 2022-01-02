@@ -1039,7 +1039,7 @@ article.book {
     border-radius: 5px;
 }
 
-ma .mailinglist-subscribe [type="email"] {
+.mailinglist-subscribe [type="email"] {
     align-self: stretch;
     margin: 0;
 }
