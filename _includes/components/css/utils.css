@@ -1,14 +1,5 @@
 /*** UTILITY ***/
 
-.button--hidden {
-    background: inherit;
-    color: inherit;
-    appearance: none;
-    margin: inherit;
-    padding: inherit;
-    border: inherit;
-}
-
 .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -30,25 +21,22 @@
     border: 0;
 }
 
-
-/* REFACTOR THESE CLASSNAMES */
-
-.hide-on-medium {
+.mobile-only {
     display: block;
 }
 
 @media screen and (min-width: 900px) {
-    .hide-on-medium {
+    .mobile-only {
         display: none;
     }
 }
 
-.hide-on-small {
+.hide-on-mobile {
     display: none;
 }
 
 @media screen and (min-width: 50rem) {
-    .hide-on-small {
+    .hide-on-mobile {
         display: block;
     }
 }

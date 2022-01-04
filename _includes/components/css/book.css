@@ -1,10 +1,10 @@
+article.book {
+    border-bottom: 0;
+}
+
 .book {
     display: flex;
     flex-direction: row;
-}
-
-.book pre {
-    white-space: pre-wrap;
 }
 
 .book a,
@@ -22,6 +22,50 @@
 .book__body {
     flex: 1;
 }
+
+.book__author {
+    margin: 1em 0 0 0;
+    font-weight: bold;
+}
+
+.book__title {
+    font-family: var(--body-font);
+    color: var(--ink-lighter);
+    font-size: 160%;
+    line-height: 1.4;
+    margin: 0;
+    margin-bottom: .5em;
+    font-weight: normal;
+    /* line-height: 1.5; */
+}
+
+.book__price {
+    font-weight: 700;
+    color: var(--ink-lighter);
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.book__type {
+    display: inline-block;
+    color: var(--white);
+    margin-left: 1em;
+    background: var(--ultra-dark-green);
+    font-size: 75%;
+    padding: .25em .5em;
+    border-radius: 1em;
+}
+
+.book__keywords {
+    margin-top: 4rem;
+}
+
+.book__keyword a {
+    color: var(--primary);
+}
+
+
+/* BOOKLIST */
 
 .booklist--small {
     margin: 0;
@@ -55,6 +99,14 @@
     flex-direction: column;
 }
 
+.book--small a {
+    text-decoration: none;
+}
+
+.book--small a:hover .book__title {
+    text-decoration: underline;
+}
+
 .book--small .book__cover {
     margin: 1em auto .5em;
     background: var(--background);
@@ -71,63 +123,14 @@
     padding: 0.5em;
 }
 
-.book h2 {
-    font-family: var(--body-font);
-    color: var(--ink-lighter);
+.book--small .book__title {
     font-size: inherit;
     line-height: inherit;
-    font-weight: normal;
     margin: 0;
 }
 
-.book:not(.book--small) h2 {
-    font-size: 160%;
-    line-height: 1.4;
-    margin-bottom: .5em;
-    /* line-height: 1.5; */
-}
-
-.book .book__author {
-    margin: 1em 0 0 0;
-    font-weight: bold;
-}
-
-.book--small a {
-    text-decoration: none;
-}
-
-.book--small a:hover .book__title {
-    text-decoration: underline;
-}
-
-.book .book__price {
-    display: inline-block;
-    margin-top: 1em;
-}
-
-.book:not(.book--small) .book__price {
-    font-weight: 700;
-    color: var(--ink-lighter);
-}
-
-.book .book__type {
-    display: inline-block;
-    color: var(--white);
-    margin-left: 1em;
-    background: var(--ultra-dark-green);
-    font-size: 75%;
-    padding: .25em .5em;
-    border-radius: 1em;
-}
-
-.book .book__keywords {
-    margin-top: 4rem;
-}
-
-.book .book__keyword a {
-    color: var(--primary);
-}
-
-article.book {
-    border-bottom: 0;
+.book--small .book__price {
+    font-weight: inherit;
+    color: inherit;
+    margin: .5em 0;
 }

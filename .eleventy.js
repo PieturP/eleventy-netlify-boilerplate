@@ -179,6 +179,18 @@ module.exports = function(eleventyConfig) {
         .use(markdownItAnchor, opts)
     );
 
+    eleventyConfig.setBrowserSyncConfig({
+        notify: true,
+        ghostMode: {
+            clicks: true,
+            forms: true,
+            scroll: true
+        },
+        ui: {
+            port: 8081
+        }
+    });
+
     return {
         templateFormats: ["md", "njk", "html", "liquid"],
 

@@ -32,10 +32,6 @@
     display: none;
 }
 
-.section-collection--testcollectie {
-    /* background: #fff; */
-}
-
 .snipcart__font--secondary,
 .snipcart__font--subtitle-small {
     font-family: var(--body-font);

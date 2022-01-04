@@ -14,15 +14,6 @@ footer {
     }
 }
 
-
-/* footer .hidden { */
-
-
-/* display: none; */
-
-
-/* } */
-
 footer h2 {
     font-size: 2rem;
     margin-top: 0;
@@ -55,46 +46,6 @@ footer ul {
     padding: 0;
 }
 
-
-/* @media (max-width: @screen-sm-max) {
-  nav {
-    text-align: center;
-    margin-top: 2rem;
-  }
-  nav:first-child {
-    margin-top: 0;
-  }
-} */
-
-footer .sitemap {}
-
-footer .sitemap .first-col,
-footer .sitemap .second-col {
-    float: left;
-    margin: 0;
-    padding-right: 1rem;
-    border-right: 1px var(--medium-grey) solid;
-}
-
-footer .sitemap .first-col ul,
-.footer .sitemap .second-col ul {
-    margin-left: 1.5rem;
-}
-
-footer .sitemap .second-col {
-    margin-left: 1rem;
-    padding-right: 0;
-    border-right: 0;
-}
-
-footer .sitemap .copyright {
-    color: var(--dark-grey);
-    font-family: var(--body-font);
-    font-weight: 300;
-    font-size: 1rem;
-    margin: 3rem 0 1rem;
-}
-
 footer .ilab-logo,
 footer .acceptance-logos {
     display: block;
@@ -123,6 +74,31 @@ footer .acceptance-logos {
     margin-top: 3rem;
 }
 
+footer .sitemap {}
+
+footer .sitemap .first-col,
+footer .sitemap .second-col {
+    float: left;
+    margin: 0;
+    padding-right: 1rem;
+    border-right: 1px var(--medium-grey) solid;
+}
+
+footer .sitemap .first-col ul,
+.footer .sitemap .second-col ul {
+    margin-left: 1.5rem;
+}
+
+footer .sitemap .second-col {
+    margin-left: 1rem;
+    padding-right: 0;
+    border-right: 0;
+}
+
 footer .copyright {
+    color: var(--dark-grey);
+    font-family: var(--body-font);
+    font-weight: 300;
     font-size: 1rem;
+    margin: 3rem 0 1rem;
 }

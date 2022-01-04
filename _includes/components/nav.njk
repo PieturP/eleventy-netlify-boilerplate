@@ -14,10 +14,10 @@
     </h1>
   </a>
   <input type="checkbox" id="menu-input" hidden />
-  <label for="menu-input" class="menu-button hide-on-medium">
+  <label for="menu-input" class="menu-button mobile-only">
     <i class="fa fa-bars"><span class="visually-hidden">Open Menu</span></i>
     <i class="fa fa-times"><span class="visually-hidden">Close Menu</span></i></label>
-    <div class="menu-button menu-button--shoppingcart hide-on-medium">
+    <div class="menu-button menu-button--shoppingcart mobile-only">
       <span class="snipcart-items-counter snipcart-checkout"></span>
       <a href="javascript:void()" class="snipcart-checkout">
         <i class="fa fa-shopping-cart"><span class="visually-hidden">View Shopping Cart</span></i>
@@ -30,7 +30,7 @@
         <a href="{{ entry.url | url }}"{% if entry.url == page.url %} data-current="current"{% endif %}>{{ entry.title }}</a>
       </li>
     {%- endfor %}
-    <li class="hide-on-medium">
+    <li class="mobile-only">
       <form method="GET" action="/search-results/" class="inline-search">
         <i class="fa fa-search"></i>
         <label for="search">Search our books on Author, Title or ISBN"></label>

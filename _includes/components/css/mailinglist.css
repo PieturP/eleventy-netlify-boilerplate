@@ -1,25 +1,35 @@
-.mailinglist-previous {
+@media (max-width: 768px) {
+    .aside--mailinglist {
+        display: block;
+        grid-column: 1/5;
+        margin-top: 3rem;
+        margin-right: 0;
+        order: 2;
+        padding: 3rem;
+    }
+}
+
+.aside--mailinglist ol {
     margin: 1em;
     padding: 0;
     list-style: disc;
 }
 
-.mailinglist-previous>li {
+.aside--mailinglist ol>li {
     margin-bottom: .25em;
 }
 
-.mailinglist-previous>li::marker {
+.aside--mailinglist ol>li::marker {
     color: var(--white);
 }
 
-.mailinglist-previous a[href],
-.mailinglist-previous a[href]:visited {
+.aside--mailinglist a[href],
+.aside--mailinglist a[href]:visited {
     color: var(--ink-lighter);
     text-decoration: underline;
-    /* font-weight: 700; */
 }
 
-.mailinglist-previous a[href]:hover {
+.aside--mailinglist a[href]:hover {
     text-decoration: none;
 }
 
@@ -62,22 +72,9 @@
 .mailinglist-subscribe .button {
     margin-top: 0px;
     margin-left: 1rem;
-    /* height: 100%; */
-    /* align-self: stretch; */
     height: auto;
 }
 
 .mailinglist-subscribe .button:hover {
     background: var(--ultra-dark-green);
-}
-
-@media (max-width: 768px) {
-    .aside--mailinglist {
-        display: block;
-        grid-column: 1/5;
-        margin-top: 3rem;
-        margin-right: 0;
-        order: 2;
-        padding: 3rem;
-    }
 }
