@@ -4,7 +4,13 @@ article.book {
 
 .book {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+@media (min-width: 500px) {
+    .book {
+        flex-direction: row;
+    }
 }
 
 .book a,
@@ -60,12 +66,12 @@ article.book {
     margin-top: 4rem;
 }
 
-.book__keyword a {
+.book__keyword a[href] {
     color: var(--primary);
 }
 
 
-/* BOOKLIST */
+/* BOOKLIST (only in --small atm.) */
 
 .booklist--small {
     margin: 0;
