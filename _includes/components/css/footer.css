@@ -1,0 +1,128 @@
+/************** FOOTER *************/
+
+footer {
+    font-size: 1.5rem;
+    border-top: 1px var(--medium-grey) solid;
+    background: linear-gradient(3deg, var(--medium-grey), var(--light-grey));
+    margin-top: 4rem;
+    padding-top: 2rem;
+}
+
+@media screen and (min-width: 50rem) {
+    footer {
+        padding-top: 4rem;
+    }
+}
+
+
+/* footer .hidden { */
+
+
+/* display: none; */
+
+
+/* } */
+
+footer h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+footer .row {
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .row>* {
+    margin: 1rem 0;
+}
+
+@media screen and (min-width: 50rem) {
+    footer .row {
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+/* @media (max-width: @screen-sm-max) {
+  nav {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  nav:first-child {
+    margin-top: 0;
+  }
+} */
+
+footer .sitemap {}
+
+footer .sitemap .first-col,
+footer .sitemap .second-col {
+    float: left;
+    margin: 0;
+    padding-right: 1rem;
+    border-right: 1px var(--medium-grey) solid;
+}
+
+footer .sitemap .first-col ul,
+.footer .sitemap .second-col ul {
+    margin-left: 1.5rem;
+}
+
+footer .sitemap .second-col {
+    margin-left: 1rem;
+    padding-right: 0;
+    border-right: 0;
+}
+
+footer .sitemap .copyright {
+    color: var(--dark-grey);
+    font-family: var(--body-font);
+    font-weight: 300;
+    font-size: 1rem;
+    margin: 3rem 0 1rem;
+}
+
+footer .ilab-logo,
+footer .acceptance-logos {
+    display: block;
+    background-image: url('/static/img/ilab.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    font-size: 0;
+}
+
+footer .ilab-logo,
+{
+    display: block;
+    opacity: 0.8;
+}
+
+footer .ilab-logo:hover {
+    opacity: 1;
+}
+
+footer .acceptance-logos {
+    background-image: url('/static/img/acceptance.png');
+    opacity: 1;
+    margin-top: 3rem;
+}
+
+footer .copyright {
+    font-size: 1rem;
+}

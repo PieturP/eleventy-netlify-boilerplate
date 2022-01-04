@@ -1,0 +1,54 @@
+/*** UTILITY ***/
+
+.button--hidden {
+    background: inherit;
+    color: inherit;
+    appearance: none;
+    margin: inherit;
+    padding: inherit;
+    border: inherit;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+/* REFACTOR THESE CLASSNAMES */
+
+.hide-on-medium {
+    display: block;
+}
+
+@media screen and (min-width: 900px) {
+    .hide-on-medium {
+        display: none;
+    }
+}
+
+.hide-on-small {
+    display: none;
+}
+
+@media screen and (min-width: 50rem) {
+    .hide-on-small {
+        display: block;
+    }
+}

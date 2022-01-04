@@ -1,0 +1,57 @@
+/*** SNIPCART OVERRIDES ***/
+
+.snipcart-checkout {
+    display: inline-block;
+    padding: unset;
+    font-family: inherit;
+    white-space: nowrap;
+}
+
+.snipcart-add-item {
+    max-width: 20ch;
+}
+
+.snipcart-cart-summary__footer,
+.snipcart-featured-payment-methods {
+    display: none;
+}
+
+.snipcart-items-counter {
+    text-align: center;
+    font-family: var(--body-font);
+    border-radius: 1.4rem;
+    background: var(--green);
+    color: var(--white);
+    font-size: 1.4rem;
+    padding: 0 .35rem;
+    display: inline-block;
+    min-width: 2rem;
+}
+
+.snipcart-items-counter:empty {
+    display: none;
+}
+
+.section-collection--testcollectie {
+    /* background: #fff; */
+}
+
+.snipcart__font--secondary,
+.snipcart__font--subtitle-small {
+    font-family: var(--body-font);
+}
+
+.snipcart-cart-header .snipcart__font--secondary {
+    text-transform: uppercase;
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+}
+
+.snipcart__font--subtitle {
+    font-family: var(--heading-font);
+}
+
+.snipcart-base-button__label {
+    font-family: var(--body-font);
+    font-weight: bold;
+}

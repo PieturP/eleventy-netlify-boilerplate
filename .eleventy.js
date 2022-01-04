@@ -6,6 +6,9 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
 const lodashChunk = require("lodash.chunk");
 const fs = require("fs");
+const fg = require('fast-glob');
+
+
 
 module.exports = function(eleventyConfig) {
 
@@ -135,6 +138,13 @@ module.exports = function(eleventyConfig) {
             return minified;
         }
         return content;
+    });
+
+    eleventyConfig.addShortcode("includeAll", function(path) {
+        const entries = fg.sync(path, { dot: true });
+        let output = '';
+        entries.forEach(entry => { output += fs.readFileSync(entry, 'utf8').toString() });
+        return output;
     });
 
 

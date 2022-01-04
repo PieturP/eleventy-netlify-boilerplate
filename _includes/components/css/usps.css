@@ -1,0 +1,50 @@
+.section-usps {
+    background: var(--lighter-green);
+    padding: 6rem 2rem;
+    grid-column: 1/5;
+}
+
+@media screen and (min-width: 500px) {
+    .section-usps {
+        padding: 6rem 4rem;
+    }
+}
+
+.section-usps h2 {
+    text-align: center;
+    font-family: var(--body-font);
+    font-weight: normal;
+    font-size: 4rem;
+    margin: 0 0 6rem 0;
+    color: var(--ultra-dark-green);
+}
+
+.section-usps h2 em {
+    font-style: normal;
+    font-family: var(--heading-font);
+    font-weight: 900;
+}
+
+.section-usps ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 2rem;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-usps ol i {
+    display: block;
+    font-size: 8rem;
+    margin: 0 2rem 1rem;
+    color: var(--green);
+    text-shadow: 4px 4px 0 var(--white);
+}
+
+.section-usps ol span {
+    display: inline-block;
+    color: var(--ink-lighter);
+}

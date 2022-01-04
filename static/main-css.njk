@@ -1,0 +1,19 @@
+---
+permalink: /css/main.css
+---
+{#
+  {% include "components/css/utils.css" %}
+  {% include "components/css/book.css" %}
+  {% include "components/css/keywordlist.css" %}
+  {% include "components/css/mailinglist.css" %}
+  {% include "components/css/pagination.css" %}
+  {% include "components/css/snipcart.css" %}
+  {% include "components/css/usps.css" %}
+  {% include "components/css/footer.css" %}
+#}
+
+{% set css %}
+{% includeAll "_includes/components/css/*.css" %}
+{% endset %}
+
+{{ css | cssmin | safe }}
