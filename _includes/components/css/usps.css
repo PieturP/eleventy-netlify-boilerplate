@@ -4,9 +4,10 @@
     grid-column: 1/5;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 40rem) {
     .section-usps {
         padding: 6rem 4rem;
+        margin-bottom: 10rem;
     }
 }
 
