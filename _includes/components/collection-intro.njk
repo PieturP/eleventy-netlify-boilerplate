@@ -1,0 +1,17 @@
+<div class="collection-intro">
+  <div class="collection-intro__header">
+  {% if item.header %}
+    <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
+  {% endif %}
+  </div>
+  <div class="collection-intro__body">
+    <div class="collection-intro__body-inner">
+      <h2>{{ item.title }}</h2>
+      <h3>{{ item.subtitle }}</h3>
+      <div class="rte">{{item.description | safe}}</div>
+      {% if showLink %}
+        <p><a href="/collections/{{collection.title | slugify}}">Browse all books in this collection »</a></p>
+      {% endif %}
+    </div>
+  </div>
+</div>

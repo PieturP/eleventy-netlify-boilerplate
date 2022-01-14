@@ -1,3 +1,4 @@
+{% set loadSnipcart = false %}
 <head>
   <title>{{ renderData.title or title or metadata.title }}</title>
   {# <meta charset="utf-8"> #}
@@ -32,8 +33,8 @@
   {% endset %}
   <script>{{ js | jsmin | safe }}</script>
   <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />
-
-  <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
-
+  {% if loadSnipcart %}
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />
+    <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+  {% endif %}
 </head>

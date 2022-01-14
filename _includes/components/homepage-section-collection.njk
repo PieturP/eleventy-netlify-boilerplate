@@ -1,19 +1,10 @@
-<section class="full-width section-collection section-collection--{{ item.title|slugify }}">
-<div class="collection-intro">
-  <div class="collection-intro__header">
-  {% if item.header %}
-    <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
-  {% endif %}
-  </div>
-  <div class="collection-intro__body">
-    <h2>{{ item.title }}</h2>
-    <h3>{{ item.subtitle }}</h3>
-    <div class="rte">{{item.description | safe}}</div>
-  </div>
-</div>
 {% set collection = bookcollections | findBy('id', item.id) %}
 
- {% set count = 0 %}
+<section class="full-width section-collection section-collection--{{ item.title|slugify }}">
+  {% set showLink = true %}
+  {% include 'components/collection-intro.njk' %}
+
+  {% set count = 0 %}
   {% set readMore = false %}
   <ol class="booklist booklist--small">
   {%- for bookItem in collection.books %}
@@ -32,6 +23,6 @@
   </ol>
 
   {%- if readMore %}
-    <a href="/collections/{{collection.title | slugify}}">View more...</a>
+    <p class="read-more"><a href="/collections/{{collection.title | slugify}}">Browse all books in this collection »</a></p>
   {%- endif %}
 </section>

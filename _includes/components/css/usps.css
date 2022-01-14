@@ -55,3 +55,7 @@
     display: inline-block;
     color: var(--ink-lighter);
 }
+
+.section-usps + .section-collection {
+    padding-top: 0;
+}

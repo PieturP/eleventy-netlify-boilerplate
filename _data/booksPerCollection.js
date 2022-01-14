@@ -20,7 +20,7 @@ module.exports = async () => {
 
   // /*
   // let booksPerCollection = [];
-  const paginationSize = 3;
+  const paginationSize = 12;
 
   let tagMap = [];
 
@@ -37,6 +37,7 @@ module.exports = async () => {
         title: item.title,
         subtitle: item.subtitle,
         description: item.description,
+        header: item.header,
 
         tagName: slugify(item.title),
         pageNumber: pageNumber,
