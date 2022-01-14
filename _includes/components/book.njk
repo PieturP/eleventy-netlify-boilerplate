@@ -67,6 +67,7 @@
     {# <img src="book."> #}
     {# <pre>{{ book | dump }}</pre> #}
 
+    {% if book.keywords | length %}
     <div class="book__keywords">
         <h3>See also:</h3>
       {% for keyword in book.keywords %}
@@ -75,6 +76,7 @@
         {% endif %}
       {% endfor %}
     </div>
+    {% endif %}
 
   </div>
 
