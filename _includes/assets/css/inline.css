@@ -233,6 +233,10 @@ main>* {
     background: var(--secondary);
 }
 
+.full-width--padding {
+    padding-inline: 2rem;
+}
+
 .aside {
     display: none;
 }
@@ -297,7 +301,7 @@ main>* {
     }
 }
 
-.section-collection .read-more, .section-collection .booklist {
+.section-collection .read-more, section-collection .booklist {
     padding: 0 2rem;
 }
 

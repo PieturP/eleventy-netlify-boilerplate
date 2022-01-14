@@ -18,7 +18,7 @@ eleventyComputed:
 
 {% if fetchedBooks %}
 
-  <section class="full-width">
+  <section class="full-width full-width--padding">
     <h2>
       {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found:
     </h2>
