@@ -26,7 +26,7 @@
 }
 
 .section-usps ol {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
     display: grid;
@@ -34,6 +34,13 @@
     grid-gap: 2rem;
     justify-content: center;
     text-align: center;
+}
+
+@media screen and (min-width: 1600px) {
+    .section-usps ol {
+        max-width: 1600px;
+        width 100%;
+    }
 }
 
 .section-usps ol i {

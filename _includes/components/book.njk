@@ -1,5 +1,4 @@
 <article class="book">
-
   <div class="book__cover">
   {%- if book.images|length or book.image%}
     {%- if link %}
@@ -24,11 +23,11 @@
     <div class="book__description">{{ book.description }}</div>
 
     <div class="book__note">{{ book.note }}</div>
+    {%- if book.ISBN %}
+      <dl class="book__meta"><dt class="book__isbn">ISBN</dt><dd>{{ book.ISBN }}</dd></dl>
+    {%- endif %}
     <div class="book__price">{{ book.price | priceFormatter }}</div>
     <div class="book__type">{{ book.type }}</div>
-    {%- if book.isbn %}
-      <div class="book__isbn">ISBN: {{ book.isbn }}</div>
-    {%- endif %}
     {%- if link %}
       </a>
     {%- endif %}

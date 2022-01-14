@@ -1,14 +1,16 @@
 <section class="full-width section-collection section-collection--{{ item.title|slugify }}">
-{% if item.header %}
-  <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
-{% endif %}
-<h2>{{ item.title }}</h2>
-<h3>{{ item.subtitle }}</h3>
-
-
-<div class="rte">{{item.description | safe}}</div>
-
-
+<div class="collection-intro">
+  <div class="collection-intro__header">
+  {% if item.header %}
+    <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;height=240&amp;width=600&amp;format=webp" />
+  {% endif %}
+  </div>
+  <div class="collection-intro__body">
+    <h2>{{ item.title }}</h2>
+    <h3>{{ item.subtitle }}</h3>
+    <div class="rte">{{item.description | safe}}</div>
+  </div>
+</div>
 {% set collection = bookcollections | findBy('id', item.id) %}
 
  {% set count = 0 %}

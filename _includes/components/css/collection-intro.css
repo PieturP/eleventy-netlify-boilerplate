@@ -1,0 +1,25 @@
+.collection-intro {
+  display: grid;
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 40rem) {
+  .collection-intro {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.collection-intro__header img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.collection-intro__body {
+  padding: 0 2rem
+}
+
+/* @TODO: fix me for even more collections */
+.section-collection ~ .section-collection .collection-intro__header {
+  order: 2;
+}

@@ -45,6 +45,28 @@ article.book {
     /* line-height: 1.5; */
 }
 
+.book__meta {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.book__meta dt,
+.book__meta dd {
+    margin: 0;
+    padding: 0;
+}
+
+.book__isbn:after {
+    content: ':';
+}
+
+.book__isbn+dd {
+    color: var(--ink-lighter);
+    margin-left: .25em;
+}
+
 .book__price {
     font-weight: 700;
     color: var(--ink-lighter);

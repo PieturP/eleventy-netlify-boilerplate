@@ -64,8 +64,8 @@ body {
 }
 
 body {
-    display: grid;
-    height: 100vh;
+    /* display: grid; */
+    /* height: 100vh; */
     background-color: var(--background);
     color: var(--ink);
     accent-color: var(--primary);
@@ -74,11 +74,12 @@ body {
     line-height: 1.5;
 }
 
-@media (min-width: 768px) {
+
+/* @media (min-width: 768px) {
     body {
         grid-template-rows: auto 1fr auto;
     }
-}
+} */
 
 ::-moz-selection,
  ::selection {
@@ -256,9 +257,6 @@ main>* {
     }
 }
 
-
-/***/
-
 .aside {
     align-self: start;
     margin-right: 3rem;
@@ -278,7 +276,15 @@ main>* {
 }
 
 .section-snippet {
+    width: 100%;
     max-width: 65ch;
+}
+
+.section-collection {
+    width: 100%;
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
