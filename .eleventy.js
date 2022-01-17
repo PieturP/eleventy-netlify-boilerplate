@@ -127,6 +127,12 @@ module.exports = function(eleventyConfig) {
     // find obj by key containting value
     eleventyConfig.addNunjucksFilter("findBy", (arr, key, value) => arr.filter(item => item[key] === value)[0]);
 
+    // find obj by key containting value
+    eleventyConfig.addNunjucksFilter("renderContent", (snippets, snippetName) => {
+        return snippets.filter(item => item["name"] === snippetName)[0]["content"];
+    });
+
+
     // Minify HTML output
     eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
         if (outputPath && outputPath.indexOf(".html") > -1) {
