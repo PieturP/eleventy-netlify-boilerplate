@@ -2,17 +2,11 @@
 publish = "_site"
 command = "eleventy"
 
-# [[headers]]
-# for = "/*"
-
-#   [headers.values]
-#   Cache-Control = "public, s-max-age=604800"
-
-# [[headers]]
-# for = "/images/*"
-
-#   [headers.values]
-#   Cache-Control = "max-age=31536000, immutable"
+[[redirects]]
+from = "/images/*"
+to = "https://cms.scrinium.nl/assets/:splat"
+status = 307
+force = true
 
 [[redirects]]
 from = "/search-results"
@@ -27,9 +21,3 @@ to = "/.netlify/functions/serverless"
 status = 200
 force = false
 _generated_by_eleventy_serverless = "serverless"
-
-[[redirects]]
-from = "/images/*"
-to = "https://cms.scrinium.nl/assets/:splat"
-status = 307
-force = true
