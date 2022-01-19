@@ -5,7 +5,7 @@ command = "eleventy"
 [[redirects]]
 from = "/images/*"
 to = "https://cms.scrinium.nl/assets/:splat"
-status = 307
+status = 302
 force = true
 
 [[redirects]]
