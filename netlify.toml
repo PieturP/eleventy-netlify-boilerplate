@@ -2,11 +2,11 @@
 publish = "_site"
 command = "eleventy"
 
-[[headers]]
-for = "/*"
+# [[headers]]
+# for = "/*"
 
-  [headers.values]
-  Cache-Control = "public, s-max-age=604800"
+#   [headers.values]
+#   Cache-Control = "public, s-max-age=604800"
 
 # [[headers]]
 # for = "/images/*"
