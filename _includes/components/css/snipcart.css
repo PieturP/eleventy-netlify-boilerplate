@@ -33,6 +33,9 @@
 }
 
 .snipcart__font--secondary,
+.snipcart__font--subtitle,
+.snipcart__font--subtitle-small,
+.snipcart__font--secondary,
 .snipcart__font--subtitle-small {
     font-family: var(--body-font);
 }
