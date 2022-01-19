@@ -9,14 +9,14 @@ permalink: collections/{{ collection.tagName }}/{% if collection.pageNumber %}{{
 ---
 
 
-<section class="full-width section-collection section-collection--{{ item.title|slugify }}">
+<section class="full-width section-collection section-collection--{{ collection.title|slugify }}">
   {% set item = collection %}
   {% set showLink = false %}
   {% include 'components/collection-intro.njk' %}
 </section>
 
-<section>
-  <ol class="booklist--small">
+<section class="full-width">
+  <ol class="booklist booklist--small">
     {% set link = true %}
     {% for book in collection.pageData %}
       {% set book = book.book_id %}

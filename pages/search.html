@@ -20,7 +20,7 @@ eleventyComputed:
 
   <section class="full-width full-width--padding">
     <h2>
-      {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found:
+      {{ fetchedBooks.meta.filter_count }} {{ 'result' if (fetchedBooks.meta.filter_count === 1) else 'results' }} found
     </h2>
     <ol class="booklist booklist--small">
     {% for book in fetchedBooks.data %}
@@ -49,12 +49,9 @@ eleventyComputed:
   {% endif %}
 {% else %}
   <section>
-  {# <h1>No search results found</h1> #}
-    <form method="GET" action="/search-results/">
-      <input type="author" name="author" placeholder="Author" value="" autofocus="autofocus">
-      <input type="title" name="title" placeholder="Title" value="">
-      <input type="isbn" name="isbn" placeholder="ISBN" value="">
-      <input type="submit" value="Search">
-    </form>
+    <h2>Search our books</h2>
+    <p>Search by Title, Author and/or ISBN<br>
+    Alternatively, you might be interested in our <a href="/keywords">list of keywords</a></p>
+    {% include "components/search-form.njk" %}
   </section>
 {% endif %}

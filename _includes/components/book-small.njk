@@ -12,4 +12,37 @@
         <div class="book__type">{{ book.type }}</div>
     </div>
   </a>
+  <button
+    class="snipcart-add-item"
+    title="Add to cart"
+    data-item-id="{{ book.id }}"
+    data-item-price="{{ book.price }}"
+    data-item-url="/books/{{ book.id }}"
+    data-item-description="{{ book.description }}"
+
+    data-item-quantity="1"
+    data-item-min-quantity="1"
+    data-item-max-quantity="1"
+
+    {#
+    data-item-custom1-name="WeightCategory"
+    data-item-custom1-type="hidden"
+    data-item-custom1-value="{{ book.weight }}"
+    #}
+
+    data-item-custom1-name="BookType"
+    data-item-custom1-type="hidden"
+    data-item-custom1-value="{{ book.type }}"
+
+    {%- if book.images|length %}
+      data-item-image="{{ env.IMAGE_HOST }}/{{ book.images[0].image_id.file }}"
+    {%- endif %}
+    {%- if book.image %}
+      data-item-image="{{ env.IMAGE_HOST }}/{{ book.image }}"
+    {%- endif %}
+
+
+    data-item-name="{{ book.author }} {{ book.title }} ">
+    <span class="fa fa-cart-arrow-down"></span><span class="label">Add to cart</span>
+  </button>
 </article>

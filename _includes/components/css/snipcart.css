@@ -36,21 +36,17 @@
 .snipcart__font--subtitle,
 .snipcart__font--subtitle-small,
 .snipcart__font--secondary,
-.snipcart__font--subtitle-small {
-    font-family: var(--body-font);
+.snipcart__font--subtitle-small,
+.snipcart-base-button__label {
+    font-family: var(--body-font) !important;
 }
 
 .snipcart-cart-header .snipcart__font--secondary {
     text-transform: uppercase;
-    font-family: var(--heading-font);
+    font-family: var(--heading-font) !important;
     font-size: 2.5rem;
 }
 
-.snipcart__font--subtitle {
-    font-family: var(--heading-font);
-}
-
 .snipcart-base-button__label {
-    font-family: var(--body-font);
     font-weight: bold;
 }

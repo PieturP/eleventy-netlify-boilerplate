@@ -333,13 +333,18 @@ main>* {
 @media (min-width: 40rem) {
     .section-collection {
         margin-top: 5rem;
-        margin-bottom: 10rem;
+        margin-bottom: 0;
     }
 }
 
-.section-collection .read-more, section-collection .booklist {
+.section-collection .read-more {
     padding: 0 2rem;
 }
+
+.full-width > * {
+    padding: 0 2rem;
+}
+
 
 
 /** Logo / Nav **/

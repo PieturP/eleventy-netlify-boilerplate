@@ -7,6 +7,7 @@
 @media screen and (min-width: 40rem) {
     .section-usps {
         padding: 6rem 4rem;
+        margin-top: 10rem;
         margin-bottom: 10rem;
     }
 }

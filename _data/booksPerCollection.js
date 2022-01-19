@@ -20,7 +20,7 @@ module.exports = async () => {
 
   // /*
   // let booksPerCollection = [];
-  const paginationSize = 12;
+  const paginationSize = 10;
 
   let tagMap = [];
 

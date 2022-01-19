@@ -1,6 +1,8 @@
 .collection-intro {
   display: grid;
   margin-bottom: 3rem;
+  padding-left: 0;
+  padding-right: 0;
   /* padding: 3rem 0; */
 }
 
@@ -12,13 +14,28 @@
 
 .collection-intro__header {
   min-height: 240px;
+  position: relative;
 }
 .collection-intro__header img {
   object-fit: cover;
   width: 100%;
   height: 100%;
   box-shadow: 0 0 3rem var(--shadow-color);
+  aspect-ratio: 16/6;
 }
+/* .collection-intro__header:before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+   // background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, var(--green) 100%);
+  opacity: .5;
+} */
 
 .collection-intro__body {
   padding: 0 4rem;
@@ -36,6 +53,9 @@
 @media screen and (min-width: 40rem) {
   .section-collection ~ .section-collection .collection-intro__header {
     order: 2;
+  }
+  .section-collection + .full-width {
+    margin-top: 0;
   }
 }
 /* .section-collection ~ .section-collection {

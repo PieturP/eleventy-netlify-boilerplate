@@ -2,6 +2,11 @@ article.book {
     border-bottom: 0;
     margin-bottom: 5rem;
 }
+@media (min-width: 500px) {
+    article.book--small {
+        margin-bottom: 2rem;
+    }
+}
 
 .book {
     display: flex;
@@ -98,7 +103,7 @@ article.book {
 
 .booklist--small {
     margin: 0;
-    padding: 0;
+    padding-block: 0;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -126,6 +131,7 @@ article.book {
 
 .book--small {
     flex-direction: column;
+    position: relative;
 }
 
 .book--small a {
@@ -162,4 +168,34 @@ article.book {
     font-weight: inherit;
     color: inherit;
     margin: .5em 0;
+}
+
+.book--small .snipcart-add-item {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 1.2rem;
+    cursor: pointer;
+    background: transparent;
+    border: 2px var(--white) solid;
+    border-radius: 6px 0 0 0;
+    border-bottom: 0;
+    border-right: 0;
+    transform: translateX(95px);
+    transition: all .15s ease-out;
+    color: var(--dark-grey);
+    font-size: 2.2rem;
+}
+.book--small .snipcart-add-item .label {
+    /* font-size: 0; */
+    margin-left: 15px;
+    font-size: 1.6rem;
+}
+.book--small .snipcart-add-item:hover {
+    color: var(--primary);
+    transform: translateX(0);
+    background: var(--white);
+    border-color: var(--medium-grey);
+    border-width: 1px;
 }
