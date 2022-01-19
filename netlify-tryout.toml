@@ -2,6 +2,12 @@
 publish = "_site"
 command = "eleventy"
 
+[context.deploy-preview]
+  command = "eleventy && npm run noIndex"
+
+[context.branch-deploy]
+  command = "eleventy && npm run noIndex"
+
 [[redirects]]
 from = "/search-results"
 to = "/.netlify/functions/serverless"
