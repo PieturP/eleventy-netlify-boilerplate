@@ -31,5 +31,5 @@ _generated_by_eleventy_serverless = "serverless"
 [[redirects]]
 from = "/images/*"
 to = "https://cms.scrinium.nl/assets/:splat"
-status = 200
-force = false
+status = 307
+force = true
