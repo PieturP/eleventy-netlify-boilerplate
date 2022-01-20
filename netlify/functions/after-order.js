@@ -65,7 +65,7 @@ async function insertOrder(rawData) {
 
   const data = {
     "raw_data": rawData,
-    "shippingaddress_firstname": content.shippingAddress.firstName.trim(),
+    "shippingaddress_firstname": content.shippingAddress.firstName,
     "shippingaddress_name": content.shippingAddress.name.trim(),
     "shippingaddress_fullname": content.shippingAddress.fullName.trim(),
     "shippingaddress_address1": content.shippingAddress.address1.trim(),
