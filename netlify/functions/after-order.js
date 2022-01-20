@@ -72,6 +72,9 @@ async function insertOrder(rawData) {
     "shippingaddress_province": content.shippingAddress.province.trim(),
     "shippingaddress_country": content.shippingAddress.country.trim(),
     "email": content.email.trim(),
+    "invoice_uid": content.token,
+    "invoice_number": content.invoiceNumber,
+    "date_created": content.creationDate,
   }
 
   const resp = await axios.post(
