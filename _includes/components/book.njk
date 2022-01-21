@@ -27,7 +27,7 @@
       <dl class="book__meta"><dt class="book__isbn">ISBN</dt><dd>{{ book.ISBN }}</dd></dl>
     {%- endif %}
     <div class="book__price">{{ book.price | priceFormatter }}</div>
-    <div class="book__type">{{ book.type }}</div>
+    <div class="book__type book__type--{{ book.type | slugify}}">{{ book.type }}</div>
     {%- if link %}
       </a>
     {%- endif %}

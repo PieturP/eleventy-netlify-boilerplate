@@ -6,6 +6,7 @@
     --medium-green: #bacd71;
     --light-green: #dae4b2;
     --lighter-green: #ebf3ca;
+    --lightest-green: #fcfff1;
     --grey: #bbc;
     --medium-grey: #ccdcdf;
     --light-grey: #ececef;
@@ -45,6 +46,7 @@
     --color-badge: var(--white);
     --bgColor-badge: var(--light-green);
     --borderColor-badge: var(--light-green);
+    --bgColor-modal: var(--lightest-green);
 }
 
 *,
@@ -495,7 +497,6 @@ main>* {
 }
 
 .inline-search [type="search"] {
-    flex-shrink: 2;
     padding: 4px;
     padding-left: 3rem;
     border: none;
@@ -504,6 +505,7 @@ main>* {
     color: inherit;
     font-family: var(--body-font);
     border-radius: 5px;
+    max-width: 22rem;
 }
 
 .inline-search [type="submit"] {

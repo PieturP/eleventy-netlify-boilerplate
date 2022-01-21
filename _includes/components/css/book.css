@@ -89,6 +89,9 @@ article.book {
     padding: .25em .5em;
     border-radius: 1em;
 }
+.book__type--new {
+    background: var(--light-blue);
+}
 
 .book__keywords {
     margin-top: 4rem;

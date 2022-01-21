@@ -9,7 +9,7 @@
         <div class="book__author">{{ book.author }}</div>
         <h2 class="book__title">{{ book.title }}</h2>
         <div class="book__price">{{ book.price | priceFormatter }}</div>
-        <div class="book__type">{{ book.type }}</div>
+        <div class="book__type book__type--{{ book.type | slugify}}">{{ book.type }}</div>
     </div>
   </a>
   <button
