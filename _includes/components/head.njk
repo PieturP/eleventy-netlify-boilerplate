@@ -1,5 +1,4 @@
 {% set css %}{% include "assets/css/inline.css" %}{% endset %}
-{% set js %}{% include "assets/js/inline.js" %}{% endset %}
 <head>
   <title>{{ renderData.title or title or metadata.title }}</title>
   {# <meta charset="utf-8"> #}
@@ -18,20 +17,14 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Port+Lligat+Slab%7cPort+Lligat+Sans%7cOpen+Sans:300" rel="stylesheet" type="text/css">
   {# @TODO: remove Font Awesome. Change into SVG icons #}
+
+  <style>{{ css | cssmin | safe }}</style>
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-  <style>{{ css | cssmin | safe }}</style>
-  <script>{{ js | jsmin | safe }}</script>
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
   <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
-  <script type="text/javascript" async>
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', '{{env.GOOGLE_ANALYTICS_KEY}}'], ['_trackPageview']);
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = '//www.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		</script>
+  <script src="/js/main.js"></script>
 </head>

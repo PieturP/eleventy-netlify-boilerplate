@@ -1,8 +1,8 @@
 ---
-layout: layouts/page.njk
+layout: layouts/base.njk
 eleventyComputed:
   title: "{{ thePage.title + ' | ' + metadata.title if thePage.title else metadata.title }}"
-date: 2016-01-01T00:00:00.000Z
+  metaDescription: "{{ thePage.seo_description if thePage.seo_description else metadata.description }}"
 
 pagination:
   data: pageItems

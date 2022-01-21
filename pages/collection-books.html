@@ -1,6 +1,6 @@
 ---
 eleventyComputed:
-  title: "{{ collection.title }}"
+  title: "{{ collection.title + ' | ' + metadata.title if collection.title else metadata.title }}"
 pagination:
   data: booksPerCollection
   size: 1

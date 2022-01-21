@@ -1,6 +1,6 @@
 {
     "title": "Scrinium Classical Antiquity",
-    "description": "A template for building a simple blog website with the Eleventy static site generator, Netlify CMS, and with deployment to Netlify.",
+    "description": "Scrinium Classical Antiquity is a closed bookstore, selling new-, used- and antiquarian books on classical antiquity and on a vast variety of related areas.",
     "navPages": [{
             "url": "/",
             "title": "Home"

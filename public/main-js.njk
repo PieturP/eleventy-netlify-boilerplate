@@ -1,0 +1,10 @@
+---
+permalink: /js/main.js
+---
+
+{% set js %}
+{% includeAll "_includes/components/js/*.js" %}
+{% endset %}
+
+{# {{ js | jsmin | safe }} #}
+{{ js | safe}}

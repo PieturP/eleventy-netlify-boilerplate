@@ -196,6 +196,7 @@ article.book {
     color: var(--primary);
     transform: translateX(0);
     background: var(--white);
-    border-color: var(--medium-grey);
-    border-width: 1px;
+    border-color: transparent;
+    /* border-color: var(--medium-grey); */
+    /* border-width: 1px; */
 }
