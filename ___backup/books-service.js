@@ -1,5 +1,5 @@
 const axios = require('axios');
-const dotenv = require('dotenv');
+require('dotenv').config();
 dotenv.config();
 
 const env = process.env;

@@ -1,8 +1,8 @@
 const { EleventyServerless } = require("@11ty/eleventy");
-require("../netlify/functions/serverless/eleventy-bundler-modules.js");
-
-const dotenv = require('dotenv');
 const axios = require('axios');
+
+require("../netlify/functions/serverless/eleventy-bundler-modules.js");
+require('dotenv').config();
 
 const PAGE_SIZE = 10;
 

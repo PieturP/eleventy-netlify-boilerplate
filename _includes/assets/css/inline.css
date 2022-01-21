@@ -242,7 +242,9 @@ a[href]:focus {
 /*** img, iframe, other embeds ***/
 
 img,
-iframe {
+iframe,
+picture
+{
     max-width: 100%;
     height: auto;
 }
@@ -341,6 +343,11 @@ main>* {
 
 .section-collection .read-more {
     padding: 0 2rem;
+    margin: unset;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    /* margin-inline: 2rem; */
 }
 
 .full-width > * {
@@ -465,6 +472,7 @@ main>* {
 .main-nav .primary-nav a[href] {
     font-weight: normal;
     font-size: 2rem;
+    margin-right: 2px;
 }
 
 .main-nav .primary-nav a[href]:hover,

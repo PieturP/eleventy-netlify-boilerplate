@@ -20,9 +20,12 @@
         {%- endif %}
       {%- endif %}
   {%- endfor %}
+  {%- if readMore %}
+    <li>
+      <p class="read-more"><a href="/collections/{{collection.title | slugify}}">Browse all books in this collection »</a></p>
+    </li>
+  {%- endif %}
   </ol>
 
-  {%- if readMore %}
-    <p class="read-more"><a href="/collections/{{collection.title | slugify}}">Browse all books in this collection »</a></p>
-  {%- endif %}
+
 </section>

@@ -1,8 +1,7 @@
 const { EleventyServerless } = require("@11ty/eleventy");
 require("./eleventy-bundler-modules.js");
 const axios = require('axios');
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 const PAGE_SIZE = 10;
 const HEADERS = {
@@ -120,12 +119,12 @@ const handler = async(event) => {
     const path = event.path.split('/');
     const route = path[path.length - 2];
 
-    console.log('SERVERLESS HANDLER');
-    console.log({
-        // query: event.queryStringParameters,
-        path: event.path,
-        route: route
-    })
+    // console.log('SERVERLESS HANDLER');
+    // console.log({
+    //     // query: event.queryStringParameters,
+    //     path: event.path,
+    //     route: route
+    // })
 
     let elev = new EleventyServerless("serverless", {
         path: event.path,

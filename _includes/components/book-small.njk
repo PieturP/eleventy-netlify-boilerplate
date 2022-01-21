@@ -2,8 +2,17 @@
   <a href="/books/{{ book.id }}">
     <div class="book__cover">
       {%- if book.images|length %}
-          <img src="{{ env.IMAGE_HOST }}/{{ book.images[0].image_id.file }}?fit=cover&amp;height=300&amp;width=200&amp;format=webp" />
+        {% set url =  env.IMAGE_HOST + '/' + book.images[0].image_id.file %}
       {%- endif %}
+      {%- if book.image %}
+        {% set url =  env.IMAGE_HOST + '/' + book.image %}
+      {%- endif %}
+      {% if url %}
+        <picture>
+          <source type="webp" srcset="{{ url }}?fit=cover&amp;width=200&amp;height=300&amp;format=webp">
+          <img role="presentation" src="{{ url }}?fit=cover&amp;width=200&amp;height=300&amp;format=jpg" alt="Cover image">
+        </picture>
+      {% endif %}
     </div>
     <div class="book__body">
         <div class="book__author">{{ book.author }}</div>

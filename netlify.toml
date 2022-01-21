@@ -8,6 +8,11 @@ command = "eleventy"
 [context.branch-deploy]
   command = "eleventy && npm run noIndex"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+ Content-Security-Policy = "default-src 'self' https://*.snipcart.com;style-src 'self' 'nonce-DYrHwYkbA29q' https://fonts.googleapis.com https://cdn.snipcart.com https://maxcdn.bootstrapcdn.com;font-src 'self' https://maxcdn.bootstrapcdn.com https://fonts.gstatic.com;img-src 'self' localhost:8055;script-src 'self' 'unsafe-eval' https://*.snipcart.com https://www.google-analytics.com;"
+
 [[redirects]]
 from = "/search-results"
 to = "/.netlify/functions/serverless"

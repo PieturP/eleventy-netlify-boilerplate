@@ -8,7 +8,6 @@ pagination:
 permalink: collections/{{ collection.tagName }}/{% if collection.pageNumber %}{{ collection.pageNumber + 1 }}/{% endif %}
 ---
 
-
 <section class="full-width section-collection section-collection--{{ collection.title|slugify }}">
   {% set item = collection %}
   {% set showLink = false %}

@@ -1,7 +1,10 @@
 <div class="collection-intro">
   <div class="collection-intro__header">
   {% if item.header %}
-    <img src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;width=800&amp;height=500&amp;format=webp" />
+    <picture>
+      <source type="webp" srcset="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;width=800&amp;height=300&amp;format=webp">
+      <img role="presentation" src="{{ env.IMAGE_HOST }}/{{ item.header }}?fit=cover&amp;width=800&amp;height=300&amp;format=jpg">
+    </picture>
   {% endif %}
   </div>
   <div class="collection-intro__body">

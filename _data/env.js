@@ -1,7 +1,6 @@
-const dotenv = require('dotenv');
+require('dotenv').config();
 
 module.exports = () => {
-  dotenv.config();
   return {
     CURRENT_YEAR: new Date().getFullYear(),
     ...process.env

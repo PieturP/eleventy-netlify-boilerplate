@@ -5,10 +5,14 @@
       <a href="/books/{{ book.id }}">
     {%- endif %}
       {%- if book.image %}
-        <img src="{{ env.IMAGE_HOST }}/{{ book.image }}?width=300&amp;format=webp" />
+        {% set url =  env.IMAGE_HOST + '/' + book.image %}
       {%- else %}
-        <img src="{{ env.IMAGE_HOST }}/{{ book.images[0].image_id.file }}?width=300&amp;format=webp" />
+        {% set url =  env.IMAGE_HOST + '/' + book.images[0].image_id.file %}
       {% endif %}
+      <picture>
+        <source type="webp" srcset="{{ url }}?fit=cover&amp;height=300&amp;format=webp">
+        <img src="{{ url }}?fit=cover&amp;height=300&amp;format=jpg" alt="Cover image">
+      </picture>
     {%- if link %}
       </a>
     {%- endif %}

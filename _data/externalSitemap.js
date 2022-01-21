@@ -1,9 +1,8 @@
-const dotenv = require('dotenv');
+require('dotenv').config();
 const Cache = require("@11ty/eleventy-cache-assets");
 const options = require('./fetchOptions');
 
 module.exports = async () => {
-  dotenv.config();
   const params = new URLSearchParams();
   params.append('baseUrl', `${process.env.ROOT_DOMAIN}/books`)
   const url = `${process.env.DIRECTUS_API_HOST}/sitemap?${params.toString()}`

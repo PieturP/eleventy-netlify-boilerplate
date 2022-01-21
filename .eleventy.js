@@ -2,18 +2,13 @@ const { DateTime } = require("luxon");
 const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-js");
 const htmlmin = require("html-minifier");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
-const lodashChunk = require("lodash.chunk");
+// const lodashChunk = require("lodash.chunk");
 const fs = require("fs");
 const fg = require('fast-glob');
 
 
-
 module.exports = function(eleventyConfig) {
-
-    // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
-    eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
     eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
         name: "serverless", // The serverless function name from your permalink object
@@ -25,8 +20,6 @@ module.exports = function(eleventyConfig) {
     //   functionsDir: "./netlify/functions",
     // });
     eleventyConfig.addFilter("priceFormatter", function(value) { return `€ ${value.toFixed(2)}` });
-
-
 
     // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add
     // layout aliases! Say you have a bunch of existing content using
@@ -156,7 +149,7 @@ module.exports = function(eleventyConfig) {
 
     if (!process.env.ELEVENTY_SERVERLESS) {
         eleventyConfig.on('afterBuild', () => {
-            fs.copyFileSync('./netlify-tryout.toml', './netlify.toml');
+            fs.copyFileSync('./netlify-override.toml', './netlify.toml');
             console.log('afterBuild hook done. netlify toml overwritten.');
             // Run me after the build ends
         });
