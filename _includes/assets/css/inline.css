@@ -574,6 +574,7 @@ main>* {
     .main-nav #menu-input:checked~.menu-button {
         color: var(--ink-lighter);
         position: fixed;
+        z-index: 3;
     }
     .main-nav #menu-input:checked+.menu-button i:nth-child(1) {
         display: none;
@@ -590,6 +591,7 @@ main>* {
         color: var(--ink-lighter);
         min-height: 100vh;
         min-height: 100sh;
+        z-index: 2;
     }
     .main-nav .primary-nav>ul {
         display: flex;
